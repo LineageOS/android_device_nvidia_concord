@@ -26,6 +26,9 @@ TARGET_TEGRA_KERNEL   ?= 5.10
 
 include device/nvidia/t234-common/t234.mk
 
+# System properties
+include device/nvidia/concord/system_prop.mk
+
 PRODUCT_CHARACTERISTICS   := tv
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi mdpi hdpi tvdpi
 PRODUCT_AAPT_PREF_CONFIG  := xhdpi
