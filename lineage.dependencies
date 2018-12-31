@@ -25,6 +25,10 @@
    "target_path": "kernel/nvidia/nvgpu"
  },
  {
+   "repository": "android_hardware_nvidia_interfaces",
+   "target_path": "hardware/nvidia/interfaces"
+ },
+ {
    "repository": "android_hardware_nvidia_platform_t23x_concord",
    "target_path": "hardware/nvidia/platform/t23x/concord"
  },
