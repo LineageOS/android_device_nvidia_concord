@@ -65,6 +65,19 @@ PRODUCT_PACKAGES += \
     nvidia-display
 endif
 
+# Media config
+PRODUCT_COPY_FILES += \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:$(TARGET_COPY_OUT_ODM)/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:$(TARGET_COPY_OUT_ODM)/etc/media_codecs_google_video.xml
+PRODUCT_PACKAGES += \
+    media_codecs.xml
+ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_OMX)),)
+PRODUCT_PACKAGES += \
+    media_codecs_performance.xml \
+    media_profiles_V1_0.xml \
+    enctune.conf
+endif
+
 # Partitions for dynamic
 PRODUCT_COPY_FILES += \
     device/nvidia/concord/initfiles/fstab.concord:$(TARGET_COPY_OUT_RAMDISK)/fstab.arvala \
