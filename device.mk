@@ -82,3 +82,13 @@ endif
 PRODUCT_COPY_FILES += \
     device/nvidia/concord/initfiles/fstab.concord:$(TARGET_COPY_OUT_RAMDISK)/fstab.arvala \
     device/nvidia/concord/initfiles/fstab.concord:$(TARGET_COPY_OUT_RAMDISK)/fstab.concord
+
+# Thermal
+PRODUCT_PACKAGES += \
+    android.hardware.thermal@1.0-service-nvidia \
+    thermalhal.fett.xml \
+    thermalhal.kryze.xml \
+    thermalhal.rau.xml \
+    thermalhal.saxon.xml \
+    thermalhal.vizla.xml \
+    thermalhal.wren.xml
