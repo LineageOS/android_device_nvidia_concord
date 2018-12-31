@@ -44,6 +44,19 @@ PRODUCT_PACKAGES += \
     power.arvala.rc \
     power.concord.rc
 
+# Permissions
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.audio.low_latency.xml
+
+# Audio
+ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_AUDIO)),)
+PRODUCT_PACKAGES += \
+    audio_effects.xml \
+    audio_policy_configuration.xml \
+    nvaudio_conf.xml \
+    nvaudio_fx.xml
+endif
+
 # Kernel
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 TARGET_FORCE_PREBUILT_KERNEL := true
