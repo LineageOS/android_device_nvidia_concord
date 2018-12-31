@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+# Only include Shield apps for first party targets
+ifneq ($(filter $(word 2,$(subst _, ,$(TARGET_PRODUCT))), concord concord_tab),)
+include device/nvidia/shield-common/shield.mk
+endif
+
 TARGET_REFERENCE_DEVICE ?= concord
 TARGET_TEGRA_VARIANT    ?= common
 
