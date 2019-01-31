@@ -17,6 +17,8 @@
 TARGET_REFERENCE_DEVICE ?= concord
 TARGET_TEGRA_VARIANT    ?= common
 
+TARGET_TEGRA_KERNEL   ?= 5.10
+
 include device/nvidia/t234-common/t234.mk
 
 PRODUCT_CHARACTERISTICS   := tv
@@ -26,6 +28,14 @@ PRODUCT_AAPT_PREF_CONFIG  := xhdpi
 $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-heap.mk)
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
+
+# Kernel
+ifneq ($(TARGET_PREBUILT_KERNEL),)
+TARGET_FORCE_PREBUILT_KERNEL := true
+else
+PRODUCT_PACKAGES += \
+    nvidia-display
+endif
 
 # Partitions for dynamic
 PRODUCT_COPY_FILES += \

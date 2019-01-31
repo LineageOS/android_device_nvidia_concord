@@ -51,6 +51,19 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX          := 0
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 3
 endif
 
+# Kernel
+ifneq ($(TARGET_PREBUILT_KERNEL),)
+BOARD_VENDOR_KERNEL_MODULES += $(wildcard $(dir $(TARGET_PREBUILT_KERNEL))/*.ko)
+endif
+TARGET_KERNEL_CLANG_COMPILE    := false
+TARGET_KERNEL_NO_GCC           := false
+KERNEL_TOOLCHAIN               := $(shell pwd)/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-gnu-9.3/bin
+KERNEL_TOOLCHAIN_PREFIX        := aarch64-buildroot-linux-gnu-
+TARGET_KERNEL_SOURCE           := kernel/nvidia/kernel-$(TARGET_TEGRA_KERNEL)
+TARGET_KERNEL_CONFIG           := tegra_android_defconfig
+BOARD_KERNEL_IMAGE_NAME        := Image
+TARGET_KERNEL_ADDITIONAL_FLAGS := "NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL)"
+
 # Recovery
 TARGET_RECOVERY_FSTAB := device/nvidia/concord/initfiles/fstab.concord
 
