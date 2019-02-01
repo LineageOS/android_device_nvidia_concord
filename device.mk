@@ -29,6 +29,21 @@ $(call inherit-product, frameworks/native/build/tablet-10in-xhdpi-2048-dalvik-he
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += device/nvidia/concord
+
+# Init related
+PRODUCT_PACKAGES += \
+    fstab.arvala \
+    fstab.concord \
+    init.arvala.rc \
+    init.concord.rc \
+    init.concord_common.rc \
+    init.recovery.arvala.rc \
+    init.recovery.concord.rc \
+    power.arvala.rc \
+    power.concord.rc
+
 # Kernel
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 TARGET_FORCE_PREBUILT_KERNEL := true

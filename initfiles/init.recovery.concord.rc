@@ -12,16 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Boot Animation
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH  := 1080
+import init.recovery.usb.rc
 
-# Unified device support
-TARGET_INIT_VENDOR_LIB := //device/nvidia/concord:libinit_concord
-PRODUCT_VENDOR_PROPERTY_BLACKLIST := \
-    ro.product.vendor.device \
-    ro.product.vendor.model \
-    ro.product.vendor.name \
-    ro.vendor.build.fingerprint
-PRODUCT_PACKAGES += \
-    init_tegra
+on init
+    mount efivarfs none /sys/firmware/efi/efivars
+    mkdir /mnt/vendor/esp
+    mount vfat /dev/block/by-name/esp /mnt/vendor/esp

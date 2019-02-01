@@ -1,4 +1,4 @@
-# Copyright (C) 2023 The LineageOS Project
+# Copyright (C) 2022 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,16 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Boot Animation
-TARGET_SCREEN_HEIGHT := 1920
-TARGET_SCREEN_WIDTH  := 1080
+import /vendor/etc/init/hw/init.tegra.rc
+import /vendor/etc/init/hw/init.t23x.rc
+import /vendor/etc/init/hw/init.concord_common.rc
 
-# Unified device support
-TARGET_INIT_VENDOR_LIB := //device/nvidia/concord:libinit_concord
-PRODUCT_VENDOR_PROPERTY_BLACKLIST := \
-    ro.product.vendor.device \
-    ro.product.vendor.model \
-    ro.product.vendor.name \
-    ro.vendor.build.fingerprint
-PRODUCT_PACKAGES += \
-    init_tegra
+on fs
+    mount_all /vendor/etc/fstab.concord
+    swapon_all /vendor/etc/fstab.concord
+
+# Enable all cores
+on init
+    write /dev/cpuset/foreground/cpus 0-7
+    write /dev/cpuset/foreground/boost/cpus 0-7
+    write /dev/cpuset/background/cpus 0-7
+    write /dev/cpuset/system-background/cpus 0-7
+    write /dev/cpuset/top-app/cpus 0-7
