@@ -66,6 +66,7 @@ TARGET_KERNEL_SOURCE           := kernel/nvidia/kernel-$(TARGET_TEGRA_KERNEL)
 TARGET_KERNEL_CONFIG           := tegra_android_defconfig
 BOARD_KERNEL_IMAGE_NAME        := Image
 TARGET_KERNEL_ADDITIONAL_FLAGS := "NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL)"
+include device/nvidia/concord/modules.mk
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/nvidia/concord/initfiles/fstab.concord
