@@ -29,6 +29,10 @@
    "target_path": "hardware/nvidia/interfaces"
  },
  {
+   "repository": "android_hardware_nvidia_light",
+   "target_path": "hardware/nvidia/light"
+ },
+ {
    "repository": "android_hardware_nvidia_platform_t23x_concord",
    "target_path": "hardware/nvidia/platform/t23x/concord"
  },
