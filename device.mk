@@ -120,3 +120,7 @@ PRODUCT_PACKAGES += \
     thermalhal.saxon.xml \
     thermalhal.vizla.xml \
     thermalhal.wren.xml
+
+# Trust HAL
+PRODUCT_PACKAGES += \
+    vendor.lineage.trust@1.0-service
