@@ -113,6 +113,12 @@ PRODUCT_COPY_FILES += \
     device/nvidia/concord/initfiles/fstab.concord:$(TARGET_COPY_OUT_RAMDISK)/fstab.arvala \
     device/nvidia/concord/initfiles/fstab.concord:$(TARGET_COPY_OUT_RAMDISK)/fstab.concord
 
+# PHS
+ifneq ($(TARGET_TEGRA_PHS),)
+PRODUCT_PACKAGES += \
+    nvphsd.conf
+endif
+
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service-nvidia \
