@@ -23,6 +23,7 @@ TARGET_REFERENCE_DEVICE ?= concord
 TARGET_TEGRA_VARIANT    ?= common
 
 TARGET_TEGRA_KERNEL   ?= 5.10
+TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 
 include device/nvidia/t234-common/t234.mk
 
