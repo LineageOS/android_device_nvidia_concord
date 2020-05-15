@@ -22,6 +22,7 @@ endif
 TARGET_REFERENCE_DEVICE ?= concord
 TARGET_TEGRA_VARIANT    ?= common
 
+TARGET_TEGRA_BOOTCTRL ?= efi
 TARGET_TEGRA_KERNEL   ?= 5.10
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 
@@ -133,3 +134,29 @@ PRODUCT_PACKAGES += \
 # Trust HAL
 PRODUCT_PACKAGES += \
     vendor.lineage.trust@1.0-service
+
+# Updater
+ifneq ($(TARGET_TEGRA_BOOTCTRL),)
+AB_OTA_PARTITIONS += \
+    boot \
+    product \
+    recovery \
+    system \
+    vbmeta \
+    vbmeta_system \
+    vendor \
+    odm
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+ifeq ($(TARGET_TEGRA_BOOTCTRL),efi)
+AB_OTA_POSTINSTALL_CONFIG += \
+    FILESYSTEM_TYPE_system=ext4 \
+    POSTINSTALL_OPTIONAL_system=true \
+    POSTINSTALL_PATH_system=system/bin/nv_bootloader_payload_updater \
+    RUN_POSTINSTALL_system=true
+PRODUCT_PACKAGES += \
+    nv_bootloader_payload_updater \
+    kernel_only_payload \
+    AndroidLauncher
+endif
+endif
+endif
