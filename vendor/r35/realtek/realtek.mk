@@ -12,12 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include device/nvidia/t234-common/vendor/t234-by-flags.mk
-include device/nvidia/tegra-common/vendor/common-by-flags.mk
-include device/nvidia/shield-common/vendor/shield-by-flags.mk
-
-ifneq ("$(wildcard device/nvidia/concord/vendor/$(TARGET_TEGRA_L4T_BRANCH)/realtek/realtek.mk)","")
-include device/nvidia/concord/vendor/$(TARGET_TEGRA_L4T_BRANCH)/realtek/realtek.mk
-endif
-
-PRODUCT_PACKAGES += public.libraries
+PRODUCT_PACKAGES += \
+    rtl8822cu_config \
+    rtl8822cu_fw \
+    rtl8822_setting

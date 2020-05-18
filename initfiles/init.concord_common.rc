@@ -36,6 +36,8 @@ on boot
     setprop sys.usb.configfs 1
 
 on init
+    enable btlinux-1.1
+
     mount efivarfs none /sys/firmware/efi/efivars
     mkdir /mnt/vendor/esp
     mount vfat /dev/block/by-name/esp /mnt/vendor/esp

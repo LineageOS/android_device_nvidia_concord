@@ -54,6 +54,11 @@ endif
 # Assert
 TARGET_OTA_ASSERT_DEVICE := concord
 
+# Bluetooth
+ifneq ($(TARGET_TEGRA_BT),)
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/nvidia/concord/comms
+endif
+
 # Kernel
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 BOARD_VENDOR_KERNEL_MODULES += $(wildcard $(dir $(TARGET_PREBUILT_KERNEL))/*.ko)
