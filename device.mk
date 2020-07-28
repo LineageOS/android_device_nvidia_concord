@@ -24,6 +24,7 @@ TARGET_TEGRA_VARIANT    ?= common
 
 TARGET_TEGRA_BOOTCTRL ?= efi
 TARGET_TEGRA_BT       ?= btlinux
+TARGET_TEGRA_CAMERA   ?= rel-shield-r
 TARGET_TEGRA_KERNEL   ?= 5.10
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= rtl8822ce
