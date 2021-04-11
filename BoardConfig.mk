@@ -66,5 +66,6 @@ TARGET_KERNEL_ADDITIONAL_FLAGS := "NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/nvidia/concord/initfiles/fstab.concord
+TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 
 include device/nvidia/t234-common/BoardConfigCommon.mk
