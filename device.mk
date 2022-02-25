@@ -128,6 +128,16 @@ PRODUCT_PACKAGES += \
     nvphsd.conf
 endif
 
+# PModel
+PRODUCT_PACKAGES += \
+    nvpmodel \
+    nvpmodel_p3701_0000.conf \
+    nvpmodel_p3701_0004.conf \
+    nvpmodel_p3767_0000.conf \
+    nvpmodel_p3767_0001.conf \
+    nvpmodel_p3767_0003.conf \
+    nvpmodel_p3767_0004.conf
+
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service-nvidia \

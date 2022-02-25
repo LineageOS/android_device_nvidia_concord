@@ -59,6 +59,23 @@ void vendor_set_usb_product_ids(tegra_init *ti)
 		ti->property_set(id.first, id.second);
 }
 
+void vendor_set_nvpmodel(tegra_init *ti)
+{
+	if (ti->is_model(3701, 0) || ti->is_model(3701, 5)) {
+		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3701_0000.conf");
+	} else if (ti->is_model(3701, 4)) {
+		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3701_0004.conf");
+	} else if (ti->is_model(3767, 0) || ti->is_model(3767, 2)) {
+		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3767_0000.conf");
+	} else if (ti->is_model(3767, 1)) {
+		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3767_0001.conf");
+	} else if (ti->is_model(3767, 3) || ti->is_model(3767, 5)) {
+		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3767_0003.conf");
+	} else if (ti->is_model(3767, 4)) {
+		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3767_0004.conf");
+	}
+}
+
 void vendor_load_properties()
 {
 	//                                             device     name     model               id     sku api dpi
@@ -84,4 +101,8 @@ void vendor_load_properties()
 
 	if (ti.vendor_context() || ti.recovery_context())
 		vendor_set_usb_product_ids(&ti);
+
+	if (ti.vendor_context()) {
+		vendor_set_nvpmodel(&ti);
+	}
 }
