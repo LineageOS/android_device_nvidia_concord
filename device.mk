@@ -173,7 +173,8 @@ AB_OTA_POSTINSTALL_CONFIG += \
 PRODUCT_PACKAGES += \
     nv_bootloader_payload_updater \
     kernel_only_payload \
-    AndroidLauncher
+    AndroidLauncher \
+    TEGRA_BL.Cap
 endif
 endif
 endif
