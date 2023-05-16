@@ -51,6 +51,7 @@ PRODUCT_PACKAGES += \
     init.concord_common.rc \
     init.recovery.arvala.rc \
     init.recovery.concord.rc \
+    init.recovery.lkm.rc \
     power.arvala.rc \
     power.concord.rc
 
