@@ -15,11 +15,15 @@
 # Several t234 bct files are shipped with preprod values in l4t, then the flash scripts modify them for prod silicon
 # Just fix them up during extract
 function patch_preprod() {
+  echo -n "Patching out preprod bct values...";
+
   sed -i 's/preprod_dev_sign = <1>/preprod_dev_sign = <0>/' ${LINEAGE_ROOT}/${OUTDIR}/concord/r35/BCT/tegra234-br-bct-diag-boot.dts
   sed -i 's/preprod_dev_sign = <1>/preprod_dev_sign = <0>/' ${LINEAGE_ROOT}/${OUTDIR}/concord/r35/BCT/tegra234-br-bct-p3701-0000.dts
   sed -i 's/preprod_dev_sign = <1>/preprod_dev_sign = <0>/' ${LINEAGE_ROOT}/${OUTDIR}/concord/r35/BCT/tegra234-br-bct_b-p3701-0000.dts
   sed -i 's/preprod_dev_sign = <1>/preprod_dev_sign = <0>/' ${LINEAGE_ROOT}/${OUTDIR}/concord/r35/BCT/tegra234-br-bct-p3767-0000-l4t.dts
   sed -i 's/preprod_dev_sign = <1>/preprod_dev_sign = <0>/' ${LINEAGE_ROOT}/${OUTDIR}/concord/r35/BCT/tegra234-br-bct_b-p3767-0000-l4t.dts
+
+  echo "";
 }
 
 patch_preprod;
