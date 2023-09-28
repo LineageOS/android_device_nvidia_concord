@@ -52,7 +52,7 @@ BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 3
 endif
 
 # Assert
-TARGET_OTA_ASSERT_DEVICE := concord
+TARGET_OTA_ASSERT_DEVICE := concord,arvala
 
 # Bluetooth
 ifneq ($(TARGET_TEGRA_BT),)
