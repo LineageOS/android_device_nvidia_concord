@@ -82,3 +82,8 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
 # USB Type C Gadget Support
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     ucsi_ccg
+
+# Nvidia Controllers
+BOARD_VENDOR_KERNEL_MODULES_LOAD += \
+    hid_nvidia_blake \
+    hid_jarvis_remote
