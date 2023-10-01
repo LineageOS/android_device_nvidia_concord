@@ -28,8 +28,8 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
 
 # Tegra hdmi audio
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    snd_hda_tegra \
-    snd_hda_codec_hdmi
+    snd_hda_codec_hdmi \
+    snd_hda_tegra
 
 # Tegra audio processing engine
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
