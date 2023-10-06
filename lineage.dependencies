@@ -37,12 +37,12 @@
    "target_path": "hardware/nvidia/light"
  },
  {
-   "repository": "android_hardware_nvidia_platform_t23x_concord",
-   "target_path": "hardware/nvidia/platform/t23x/concord"
+   "repository": "android_hardware_nvidia_platform_t23x_concord_kernel-dts",
+   "target_path": "hardware/nvidia/platform/t23x/concord/kernel-dts"
  },
  {
-   "repository": "android_hardware_nvidia_platform_t23x_p3768",
-   "target_path": "hardware/nvidia/platform/t23x/p3768"
+   "repository": "android_hardware_nvidia_platform_t23x_p3768_kernel-dts",
+   "target_path": "hardware/nvidia/platform/t23x/p3768/kernel-dts"
  },
  {
    "repository": "android_hardware_nvidia_power",
