@@ -21,6 +21,10 @@
    "target_path": "kernel/nvidia/nvidia"
  },
  {
+   "repository": "android_kernel_nvidia_nvethernetrm",
+   "target_path": "kernel/nvidia/nvidia/drivers/net/ethernet/nvidia/nvethernet/nvethernetrm"
+ },
+ {
    "repository": "android_kernel_nvidia_nvgpu",
    "target_path": "kernel/nvidia/nvgpu"
  },
