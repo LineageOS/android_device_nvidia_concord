@@ -78,16 +78,18 @@ void vendor_set_nvpmodel(tegra_init *ti)
 
 void vendor_load_properties()
 {
-	//                                             device     name     model               id     sku api dpi
-	std::vector<tegra_init::devices> devices = { { "concord", "rau",   "Jetson AGX Orin",  3701,   0, 28, 320 },   /* 64GB (devkit only) */
-                                                     { "concord", "saxon", "Jetson AGX Orin",  3701,   4, 28, 320 },   /* 32GB */
-                                                     { "concord", "rau",   "Jetson AGX Orin",  3701,   5, 28, 320 },   /* 64GB */
-                                                     { "arvala",  "vizla", "Jetson Orin NX",   3767,   0, 28, 320 },   /* 16GB */
-                                                     { "arvala",  "wren",  "Jetson Orin NX",   3767,   1, 28, 320 },   /* 8GB */
-                                                     { "arvala",  "vizla", "Jetson Orin NX",   3767,   2, 28, 320 },   /* 16GB + SD */
-                                                     { "arvala",  "kryze", "Jetson Orin Nano", 3767,   3, 28, 320 },   /* 8GB */
-                                                     { "arvala",  "fett",  "Jetson Orin Nano", 3767,   4, 28, 320 },   /* 4GB */
-                                                     { "arvala",  "kryze", "Jetson Orin Nano", 3767,   5, 28, 320 } }; /* 8GB + SD */
+		// device     name     hardware   model              id     sku api dpi
+	std::vector<tegra_init::devices> devices = {
+		{ "concord", "rau",   "concord", "Jetson AGX Orin",  3701,   0, 28, 320 }, /* 64GB (devkit only) */
+		{ "concord", "saxon", "concord", "Jetson AGX Orin",  3701,   4, 28, 320 }, /* 32GB */
+		{ "concord", "rau",   "concord", "Jetson AGX Orin",  3701,   5, 28, 320 }, /* 64GB */
+		{ "arvala",  "vizla", "arvala",  "Jetson Orin NX",   3767,   0, 28, 320 }, /* 16GB */
+		{ "arvala",  "wren",  "arvala",  "Jetson Orin NX",   3767,   1, 28, 320 }, /* 8GB */
+		{ "arvala",  "vizla", "arvala",  "Jetson Orin NX",   3767,   2, 28, 320 }, /* 16GB + SD */
+		{ "arvala",  "kryze", "arvala",  "Jetson Orin Nano", 3767,   3, 28, 320 }, /* 8GB */
+		{ "arvala",  "fett",  "arvala",  "Jetson Orin Nano", 3767,   4, 28, 320 }, /* 4GB */
+		{ "arvala",  "kryze", "arvala",  "Jetson Orin Nano", 3767,   5, 28, 320 }, /* 8GB + SD */
+	};
 	tegra_init::build_version tav = { "11", "RQ1A.210105.003", "7094531_2914.3416" };
 
 	tegra_init ti(devices);
