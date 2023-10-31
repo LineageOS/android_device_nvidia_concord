@@ -22,6 +22,8 @@ endif
 TARGET_REFERENCE_DEVICE ?= concord
 TARGET_TEGRA_VARIANT    ?= common
 
+TARGET_TEGRA_MODELS := $(shell awk -F, '/tegra_init::devices/{ f = 1; next } /};/{ f = 0 } f{ gsub(/"/, "", $$3); gsub(/ /, "", $$3); print $$3 }' device/nvidia/$(TARGET_REFERENCE_DEVICE)/init/init_$(TARGET_REFERENCE_DEVICE).cpp |sort |uniq)
+
 TARGET_TEGRA_BOOTCTRL ?= efi
 TARGET_TEGRA_BT       ?= btlinux
 TARGET_TEGRA_CAMERA   ?= rel-shield-r
@@ -51,16 +53,9 @@ PRODUCT_SOONG_NAMESPACES += device/nvidia/concord
 
 # Init related
 PRODUCT_PACKAGES += \
-    fstab.arvala \
-    fstab.concord \
-    init.arvala.rc \
-    init.concord.rc \
+    $(foreach model,$(TARGET_TEGRA_MODELS),fstab.$(model) init.$(model).rc init.recovery.$(model).rc power.$(model).rc) \
     init.concord_common.rc \
-    init.recovery.arvala.rc \
-    init.recovery.concord.rc \
-    init.recovery.lkm.rc \
-    power.arvala.rc \
-    power.concord.rc
+    init.recovery.lkm.rc
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -117,11 +112,6 @@ PRODUCT_PACKAGES += \
     enctune.conf
 endif
 
-# Partitions for dynamic
-PRODUCT_COPY_FILES += \
-    device/nvidia/concord/initfiles/fstab.concord:$(TARGET_COPY_OUT_RAMDISK)/fstab.arvala \
-    device/nvidia/concord/initfiles/fstab.concord:$(TARGET_COPY_OUT_RAMDISK)/fstab.concord
-
 # PHS
 ifneq ($(TARGET_TEGRA_PHS),)
 PRODUCT_PACKAGES += \
@@ -141,12 +131,7 @@ PRODUCT_PACKAGES += \
 # Thermal
 PRODUCT_PACKAGES += \
     android.hardware.thermal@1.0-service-nvidia \
-    thermalhal.fett.xml \
-    thermalhal.kryze.xml \
-    thermalhal.rau.xml \
-    thermalhal.saxon.xml \
-    thermalhal.vizla.xml \
-    thermalhal.wren.xml
+    $(foreach model,$(TARGET_TEGRA_MODELS),thermalhal.$(model).xml)
 
 # Trust HAL
 PRODUCT_PACKAGES += \

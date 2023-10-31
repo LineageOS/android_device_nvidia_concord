@@ -14,56 +14,15 @@
 
 LOCAL_PATH:= $(call my-dir)
 
-# AGX Orin Devkit/64GB/Industral
+# Parameters
+# $1 Variant name
+define thermal_config_rule
 include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.rau.xml
+LOCAL_MODULE        := thermalhal.$(strip $(1)).xml
 LOCAL_MODULE_TAGS   := optional
 LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.rau.xml
+LOCAL_SRC_FILES     := thermalhal.$(strip $(1)).xml
 LOCAL_VENDOR_MODULE := true
 include $(BUILD_PREBUILT)
-
-# AGX Orin 32GB
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.saxon.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.saxon-vizla.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-# Orin NX 16GB
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.vizla.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.saxon-vizla.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-# Orin NX 8GB
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.wren.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.wren.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-# Orin Nano 8GB
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.kryze.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.kryze-fett.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
-
-# Orin Nano 4GB
-include $(CLEAR_VARS)
-LOCAL_MODULE        := thermalhal.fett.xml
-LOCAL_MODULE_TAGS   := optional
-LOCAL_MODULE_CLASS  := ETC
-LOCAL_SRC_FILES     := thermalhal.kryze-fett.xml
-LOCAL_VENDOR_MODULE := true
-include $(BUILD_PREBUILT)
+endef
+$(foreach model,$(TARGET_TEGRA_MODELS),$(eval $(call thermal_config_rule,$(model))))
