@@ -16,3 +16,6 @@ import init.recovery.usb.rc
 
 on init
     mount efivarfs none /sys/firmware/efi/efivars context=u:object_r:sysfs_efivar:s0
+
+    # If tegra-dce and nvidia-drm are loaded by modules.load, probe fails
+    exec u:r:modprobe:s0 -- /system/bin/modprobe -a nvidia-drm
