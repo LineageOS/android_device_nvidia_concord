@@ -83,3 +83,21 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     hid-nvidia-blake \
     hid-jarvis-remote
+
+
+# Copy to recovery
+RECOVERY_KERNEL_MODULES := \
+    hid-nvidia-blake.ko \
+    hid-jarvis-remote.ko \
+    tegra-bpmp-thermal.ko \
+    pwm-fan.ko \
+    nvidia.ko \
+    nvidia-drm.ko \
+    nvidia-modeset.ko
+
+# Copy to recovery
+BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := \
+    hid-nvidia-blake \
+    hid-jarvis-remote \
+    tegra-bpmp-thermal \
+    pwm-fan
