@@ -17,13 +17,9 @@ recovery_uncompressed_ramdisk := $(PRODUCT_OUT)/ramdisk-recovery.cpio
 INSTALLED_NVIDIA_DISPLAY_KO    := $(TARGET_OUT_VENDOR)/lib/modules/nvidia-display.ko
 
 RECOVERY_KMOD_TARGETS := \
-    hid-jarvis-remote.ko \
-    hid-nvidia-blake.ko \
     nvidia.ko \
     nvidia-drm.ko \
-    nvidia-modeset.ko \
-    tegra-bpmp-thermal.ko \
-    pwm-fan.ko
+    nvidia-modeset.ko
 INSTALLED_RECOVERY_KMOD_TARGETS := $(RECOVERY_KMOD_TARGETS:%=$(TARGET_RECOVERY_ROOT_OUT)/lib/modules/%)
 $(INSTALLED_RECOVERY_KMOD_TARGETS): $(INSTALLED_NVIDIA_DISPLAY_KO)
 	echo -e ${CL_GRN}"Copying kernel modules to recovery"${CL_RST}
