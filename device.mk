@@ -125,6 +125,13 @@ PRODUCT_COPY_FILES += \
     device/nvidia/concord/nvpmodel/nvpmodel_p3767_0004_super.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0004_super.conf
 endif
 
+# Shipping API
+ifneq ($(filter 5.10, $(TARGET_KERNEL_VERSION)),)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
+else
+PRODUCT_SHIPPING_API_LEVEL := 36
+endif
+
 # Thermal
 ifneq ($(TARGET_TEGRA_THERMAL),)
 ifeq ($(filter 5.10, $(TARGET_KERNEL_VERSION)),)
