@@ -97,7 +97,8 @@ endif
 PRODUCT_PACKAGES += \
     lkm_loader
 PRODUCT_COPY_FILES += \
-    device/nvidia/tegra-common/initfiles/init.lkm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.lkm.rc
+    device/nvidia/tegra-common/initfiles/init.lkm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.lkm.rc \
+    device/nvidia/concord/initfiles/lkm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/lkm.rc
 
 # Media config
 ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_OMX)),)
@@ -123,6 +124,13 @@ PRODUCT_COPY_FILES += \
     device/nvidia/concord/nvpmodel/nvpmodel_p3767_0001_super.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0001_super.conf \
     device/nvidia/concord/nvpmodel/nvpmodel_p3767_0003_super.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0003_super.conf \
     device/nvidia/concord/nvpmodel/nvpmodel_p3767_0004_super.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0004_super.conf
+endif
+
+# Shipping API
+ifneq ($(filter 5.10, $(TARGET_KERNEL_VERSION)),)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
+else
+PRODUCT_SHIPPING_API_LEVEL := 36
 endif
 
 # Thermal
