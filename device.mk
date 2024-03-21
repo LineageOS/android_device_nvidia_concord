@@ -148,10 +148,6 @@ PRODUCT_PACKAGES += \
     thermalhal.vizla.xml \
     thermalhal.wren.xml
 
-# Trust HAL
-PRODUCT_PACKAGES += \
-    vendor.lineage.trust@1.0-service
-
 # Updater
 ifneq ($(TARGET_TEGRA_BOOTCTRL),)
 AB_OTA_PARTITIONS += \
