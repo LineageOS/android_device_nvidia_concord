@@ -20,6 +20,12 @@ MMD_HOST     := $(HOST_OUT_EXECUTABLES)/mmd
 MKFSFAT_HOST := $(HOST_OUT_EXECUTABLES)/mformat
 LPFLASH_HOST := $(HOST_OUT_EXECUTABLES)/lpflash
 
+ifneq ($(findstring dtstree,$(TARGET_KERNEL_ADDITIONAL_FLAGS)),)
+DTB_PATH := $(abspath $(KERNEL_OUT)/../nv-oot/device-tree/platform/generic-dts/t19x/lineage)
+else
+DTB_PATH := $(abspath $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia)
+endif
+
 include $(CLEAR_VARS)
 LOCAL_MODULE        := p3710_flash_package
 LOCAL_MODULE_SUFFIX := .txz
@@ -54,10 +60,10 @@ $(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_
 	@touch $(dir $@)/super_meta_only.img
 	@$(LPFLASH_HOST) $(dir $@)/super_meta_only.img $(INSTALLED_SUPER_EMPTY_TARGET)
 	@cp $(PRODUCT_OUT)/AndroidConfiguration.dtbo $(dir $@)/
-	@cp $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3701-0000-p3737-0000.dtb $(dir $@)/
-	@cp $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3737-audio-codec-rt5658-40pin.dtbo $(dir $@)/
-	@cp $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3737-overlay.dtbo $(dir $@)/
-	@cp $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3701-overlay.dtbo $(dir $@)/
+	@cp $(DTB_PATH)/tegra234-p3701-0000-p3737-0000.dtb $(dir $@)/
+	@cp $(DTB_PATH)/tegra234-p3737-audio-codec-rt5658-40pin.dtbo $(dir $@)/
+	@cp $(DTB_PATH)/tegra234-p3737-overlay.dtbo $(dir $@)/
+	@cp $(DTB_PATH)/tegra234-p3701-overlay.dtbo $(dir $@)/
 	@cp $(CONCORD_BCT)/* $(dir $@)/
 	@rm -f $(dir $@)/*p3767*
 	@dd if=/dev/zero of=$(dir $@)/esp.img bs=1M count=64
@@ -103,11 +109,11 @@ $(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_
 	@touch $(dir $@)/super_meta_only.img
 	@$(LPFLASH_HOST) $(dir $@)/super_meta_only.img $(INSTALLED_SUPER_EMPTY_TARGET)
 	@cp $(PRODUCT_OUT)/AndroidConfiguration.dtbo $(dir $@)/
-	@cp $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3767-0000-p3768-0000-a0-android.dtb $(dir $@)/
-	@cp $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3767-0001-p3768-0000-a0-android.dtb $(dir $@)/
-	@cp $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3767-0003-p3768-0000-a0-android.dtb $(dir $@)/
-	@cp $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3767-0004-p3768-0000-a0-android.dtb $(dir $@)/
-	@cp $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3767-overlay.dtbo $(dir $@)/
+	@cp $(DTB_PATH)/tegra234-p3767-0000-p3768-0000-a0-android.dtb $(dir $@)/
+	@cp $(DTB_PATH)/tegra234-p3767-0001-p3768-0000-a0-android.dtb $(dir $@)/
+	@cp $(DTB_PATH)/tegra234-p3767-0003-p3768-0000-a0-android.dtb $(dir $@)/
+	@cp $(DTB_PATH)/tegra234-p3767-0004-p3768-0000-a0-android.dtb $(dir $@)/
+	@cp $(DTB_PATH)/tegra234-p3767-overlay.dtbo $(dir $@)/
 	@cp $(CONCORD_BCT)/* $(dir $@)/
 	@rm -f $(dir $@)/*p3701*
 	@cp $(CONCORD_BCT)/tegra234-mb2-bct-scr-p3701-0000-override.dts $(dir $@)/

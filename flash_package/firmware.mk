@@ -25,6 +25,12 @@ KERNEL_OUT ?= $(PRODUCT_OUT)/obj/KERNEL_OBJ
 DTC_HOST    := $(HOST_OUT_EXECUTABLES)/dtc
 FDTPUT_HOST := $(HOST_OUT_EXECUTABLES)/fdtput
 
+ifneq ($(findstring dtstree,$(TARGET_KERNEL_ADDITIONAL_FLAGS)),)
+DTB_PATH := $(abspath $(KERNEL_OUT)/../nv-oot/device-tree/platform/generic-dts/t19x/lineage)
+else
+DTB_PATH := $(abspath $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia)
+endif
+
 COMMA := ,
 E :=
 SPACE := $(E) $(E)
@@ -100,7 +106,7 @@ $(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(FDTPUT_HOST) $(DTC_HOST)
 	@cp $(INSTALLED_TIANOCORE_TARGET) $(strip $1)/uefi_jetson.bin
 	@mv $(strip $1)/bpmp_t234-$(strip $3)_prod.bin $(strip $1)/bpmp_t234-prod.bin
 	@cp $(CONCORD_BCT)/$(strip $4) $(strip $1)/tegra234-bpmp.dtb
-	@cp $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/$(strip $5) $(strip $1)/
+	@cp $(DTB_PATH)/$(strip $5) $(strip $1)/
 	@cp $(PRODUCT_OUT)/AndroidConfiguration.dtbo $(strip $1)/
 	$(FDTPUT_HOST) -p -t bx $(strip $1)/AndroidConfiguration.dtbo /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformSpec data $(shell printf "p%04d-%04d+p%04d-%04d.android\0" $(strip $(24)) $(strip $(25)) $(strip $(26)) $(strip $(27)) |xxd -p |sed 's/../& /g');
 	$(FDTPUT_HOST) -p $(strip $1)/AndroidConfiguration.dtbo /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformSpec runtime;
@@ -130,7 +136,7 @@ $(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(FDTPUT_HOST) $(DTC_HOST)
 		--cmd "sign" \
 		--cfg $(strip $(2)) \
 		--odmdata $(subst $(SPACE),$(COMMA),$(6)) \
-		--overlay_dtb AndroidConfiguration.dtbo,$(subst $(SPACE),,$(foreach dtbo,$(strip $(7)),$(abspath $(KERNEL_OUT))/arch/arm64/boot/dts/nvidia/$(dtbo),)) \
+		--overlay_dtb AndroidConfiguration.dtbo,$(subst $(SPACE),,$(foreach dtbo,$(strip $(7)),$(DTB_PATH)/$(dtbo),)) \
 		--bldtb $(strip $(5)) \
 		--device_config $(strip $(8)) \
 		--misc_config $(strip $(9)) \
@@ -348,15 +354,15 @@ _kernel_blob := $(_kernel_blob_intermediates)/$(LOCAL_MODULE)
 $(_kernel_blob): $(INSTALLED_KERNEL_TARGET)
 	@mkdir -p $(dir $@)
 	OUT=$(dir $@) TOP=$(BUILD_TOP) python2 $(TEGRAFLASH_PATH)/BUP_generator.py -t update -e \
-		"$(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3701-0000-p3737-0000.dtb kernel-dtb 20 0 p3710-0000+p3737-0000.android; \
-		 $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3701-0004-p3737-0000.dtb kernel-dtb 20 0 p3710-0004+p3737-0000.android; \
-		 $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3701-0000-p3737-0000.dtb kernel-dtb 20 0 p3710-0005+p3737-0000.android; \
-		 $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3767-0000-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0000+p3768-0000.android; \
-		 $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3767-0001-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0001+p3768-0000.android; \
-		 $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3767-0000-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0002+p3768-0000.android; \
-		 $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3767-0003-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0003+p3768-0000.android; \
-		 $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3767-0004-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0004+p3768-0000.android; \
-		 $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia/tegra234-p3767-0003-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0005+p3768-0000.android"
+		"$(DTB_PATH)/tegra234-p3701-0000-p3737-0000.dtb kernel-dtb 20 0 p3710-0000+p3737-0000.android; \
+		 $(DTB_PATH)/tegra234-p3701-0004-p3737-0000.dtb kernel-dtb 20 0 p3710-0004+p3737-0000.android; \
+		 $(DTB_PATH)/tegra234-p3701-0000-p3737-0000.dtb kernel-dtb 20 0 p3710-0005+p3737-0000.android; \
+		 $(DTB_PATH)/tegra234-p3767-0000-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0000+p3768-0000.android; \
+		 $(DTB_PATH)/tegra234-p3767-0001-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0001+p3768-0000.android; \
+		 $(DTB_PATH)/tegra234-p3767-0000-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0002+p3768-0000.android; \
+		 $(DTB_PATH)/tegra234-p3767-0003-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0003+p3768-0000.android; \
+		 $(DTB_PATH)/tegra234-p3767-0004-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0004+p3768-0000.android; \
+		 $(DTB_PATH)/tegra234-p3767-0003-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0005+p3768-0000.android"
 	@mv $(dir $@)/ota.blob $@
 
 include $(BUILD_SYSTEM)/base_rules.mk
