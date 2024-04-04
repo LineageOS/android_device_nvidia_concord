@@ -126,7 +126,6 @@ declare -a FLASH_CMD_FLASH=(
   --dev_params tegra234-br-bct-p3767-0000-l4t.dts,tegra234-br-bct_b-p3767-0000-l4t.dts
   --mb2bct_cfg tegra234-mb2-bct-misc-p3767-0000.dts
   --sdram_config tegra234-p3767-${SDRAMSKU}-sdram-l4t.dts
-  --secondary_gpt_backup
   --bct_backup
   --boot_chain A
   --bins "psc_fw pscfw_t234_prod.bin; mts_mce mce_flash_o10_cr_prod.bin; mb2_applet applet_t234.bin; mb2_bootloader mb2_t234.bin; xusb_fw xusb_t234_prod.bin; dce_fw display-t234-dce.bin; nvdec nvdec_t234_prod.fw; bpmp_fw bpmp_t234-prod.bin; bpmp_fw_dtb tegra234-bpmp.dtb; rce_fw camera-rtcpu-t234-rce.img; ape_fw adsp-fw.bin; spe_fw spe_t234.bin; tos tos-optee_t234.img; eks eks.img");
