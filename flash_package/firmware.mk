@@ -265,7 +265,7 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3710-0000_SIGNED_PATH)/bpmp_t234-prod_sigheader.bin.encrypt bpmp-fw 3531 2 p3701-0000+p3737-0000.android; \
 		 $(P3710-0000_SIGNED_PATH)/tegra234-bpmp_sigheader.dtb.encrypt bpmp-fw-dtb 3531 0 p3701-0000+p3737-0000.android; \
 		 $(P3710-0000_SIGNED_PATH)/uefi_jetson_with_dtb_sigheader.bin.encrypt cpu-bootloader 20 0 p3701-0000+p3737-0000.android; \
-		 $(P3710-0000_SIGNED_PATH)/display-t234-dce_with_tegra234-p3701-0000-p3737-0000_with_odm_overlay_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3701-0000+p3737-0000.android; \
+		 $(P3710-0000_SIGNED_PATH)/display-t234-dce_with_tegra234-p3701-0000-p3737-0000_with_odm_overlay.dtb_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3701-0000+p3737-0000.android; \
 		 $(P3710-0000_SIGNED_PATH)/qspi_bootblob_ver.txt VER 20 0 p3701-0000+p3737-0000.android; \
 		 $(P3710-0004_SIGNED_PATH)/mb1_t234_prod_aligned_sigheader.bin.encrypt mb1 3531 2 p3701-0004+p3737-0000.android; \
 		 $(P3710-0004_SIGNED_PATH)/mb1_cold_boot_bct_MB1_sigheader.bct.encrypt MB1_BCT 20 0 p3701-0004+p3737-0000.android; \
@@ -274,7 +274,7 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3710-0004_SIGNED_PATH)/bpmp_t234-prod_sigheader.bin.encrypt bpmp-fw 3531 2 p3701-0004+p3737-0000.android; \
 		 $(P3710-0004_SIGNED_PATH)/tegra234-bpmp_sigheader.dtb.encrypt bpmp-fw-dtb 3531 0 p3701-0004+p3737-0000.android; \
 		 $(P3710-0004_SIGNED_PATH)/uefi_jetson_with_dtb_sigheader.bin.encrypt cpu-bootloader 20 0 p3701-0004+p3737-0000.android; \
-		 $(P3710-0004_SIGNED_PATH)/display-t234-dce_with_tegra234-p3701-0004-p3737-0000_with_odm_overlay_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3701-0004+p3737-0000.android; \
+		 $(P3710-0004_SIGNED_PATH)/display-t234-dce_with_tegra234-p3701-0004-p3737-0000_with_odm_overlay.dtb_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3701-0004+p3737-0000.android; \
 		 $(P3710-0004_SIGNED_PATH)/qspi_bootblob_ver.txt VER 20 0 p3701-0004+p3737-0000.android; \
 		 $(P3710-0005_SIGNED_PATH)/mb1_t234_prod_aligned_sigheader.bin.encrypt mb1 3531 2 p3701-0005+p3737-0000.android; \
 		 $(P3710-0005_SIGNED_PATH)/mb1_cold_boot_bct_MB1_sigheader.bct.encrypt MB1_BCT 20 0 p3701-0005+p3737-0000.android; \
@@ -283,7 +283,7 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3710-0005_SIGNED_PATH)/bpmp_t234-prod_sigheader.bin.encrypt bpmp-fw 3531 2 p3701-0005+p3737-0000.android; \
 		 $(P3710-0005_SIGNED_PATH)/tegra234-bpmp_sigheader.dtb.encrypt bpmp-fw-dtb 3531 0 p3701-0005+p3737-0000.android; \
 		 $(P3710-0005_SIGNED_PATH)/uefi_jetson_with_dtb_sigheader.bin.encrypt cpu-bootloader 20 0 p3701-0005+p3737-0000.android; \
-		 $(P3710-0005_SIGNED_PATH)/display-t234-dce_with_tegra234-p3701-0000-p3737-0000_with_odm_overlay_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3701-0005+p3737-0000.android; \
+		 $(P3710-0005_SIGNED_PATH)/display-t234-dce_with_tegra234-p3701-0000-p3737-0000_with_odm_overlay.dtb_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3701-0005+p3737-0000.android; \
 		 $(P3710-0005_SIGNED_PATH)/qspi_bootblob_ver.txt VER 20 0 p3701-0005+p3737-0000.android; \
 		 $(P3766-0000_SIGNED_PATH)/mb1_t234_prod_aligned_sigheader.bin.encrypt mb1 3531 2 p3767-0000+p3768-0000.android; \
 		 $(P3766-0000_SIGNED_PATH)/mb1_cold_boot_bct_MB1_sigheader.bct.encrypt MB1_BCT 20 0 p3767-0000+p3768-0000.android; \
@@ -292,7 +292,7 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3766-0000_SIGNED_PATH)/bpmp_t234-prod_sigheader.bin.encrypt bpmp-fw 3531 2 p3767-0000+p3768-0000.android; \
 		 $(P3766-0000_SIGNED_PATH)/tegra234-bpmp_sigheader.dtb.encrypt bpmp-fw-dtb 3531 0 p3767-0000+p3768-0000.android; \
 		 $(P3766-0000_SIGNED_PATH)/uefi_jetson_with_dtb_sigheader.bin.encrypt cpu-bootloader 20 0 p3767-0000+p3768-0000.android; \
-		 $(P3766-0000_SIGNED_PATH)/display-t234-dce_with_tegra234-p3767-0000-p3768-0000-a0-android_with_odm_overlay_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3767-0000+p3768-0000.android; \
+		 $(P3766-0000_SIGNED_PATH)/display-t234-dce_with_tegra234-p3767-0000-p3768-0000-a0-android_with_odm_overlay.dtb_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3767-0000+p3768-0000.android; \
 		 $(P3766-0000_SIGNED_PATH)/qspi_bootblob_ver.txt VER 20 0 p3767-0000+p3768-0000.android; \
 		 $(P3766-0001_SIGNED_PATH)/mb1_t234_prod_aligned_sigheader.bin.encrypt mb1 3531 2 p3767-0001+p3768-0000.android; \
 		 $(P3766-0001_SIGNED_PATH)/mb1_cold_boot_bct_MB1_sigheader.bct.encrypt MB1_BCT 20 0 p3767-0001+p3768-0000.android; \
@@ -301,7 +301,7 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3766-0001_SIGNED_PATH)/bpmp_t234-prod_sigheader.bin.encrypt bpmp-fw 3531 2 p3767-0001+p3768-0000.android; \
 		 $(P3766-0001_SIGNED_PATH)/tegra234-bpmp_sigheader.dtb.encrypt bpmp-fw-dtb 3531 0 p3767-0001+p3768-0000.android; \
 		 $(P3766-0001_SIGNED_PATH)/uefi_jetson_with_dtb_sigheader.bin.encrypt cpu-bootloader 20 0 p3767-0001+p3768-0000.android; \
-		 $(P3766-0001_SIGNED_PATH)/display-t234-dce_with_tegra234-p3767-0001-p3768-0000-a0-android_with_odm_overlay_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3767-0001+p3768-0000.android; \
+		 $(P3766-0001_SIGNED_PATH)/display-t234-dce_with_tegra234-p3767-0001-p3768-0000-a0-android_with_odm_overlay.dtb_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3767-0001+p3768-0000.android; \
 		 $(P3766-0001_SIGNED_PATH)/qspi_bootblob_ver.txt VER 20 0 p3767-0001+p3768-0000.android; \
 		 $(P3766-0002_SIGNED_PATH)/mb1_t234_prod_aligned_sigheader.bin.encrypt mb1 3531 2 p3767-0002+p3768-0000.android; \
 		 $(P3766-0002_SIGNED_PATH)/mb1_cold_boot_bct_MB1_sigheader.bct.encrypt MB1_BCT 20 0 p3767-0002+p3768-0000.android; \
@@ -310,7 +310,7 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3766-0002_SIGNED_PATH)/bpmp_t234-prod_sigheader.bin.encrypt bpmp-fw 3531 2 p3767-0002+p3768-0000.android; \
 		 $(P3766-0002_SIGNED_PATH)/tegra234-bpmp_sigheader.dtb.encrypt bpmp-fw-dtb 3531 0 p3767-0002+p3768-0000.android; \
 		 $(P3766-0002_SIGNED_PATH)/uefi_jetson_with_dtb_sigheader.bin.encrypt cpu-bootloader 20 0 p3767-0002+p3768-0000.android; \
-		 $(P3766-0002_SIGNED_PATH)/display-t234-dce_with_tegra234-p3767-0000-p3768-0000-a0-android_with_odm_overlay_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3767-0002+p3768-0000.android; \
+		 $(P3766-0002_SIGNED_PATH)/display-t234-dce_with_tegra234-p3767-0000-p3768-0000-a0-android_with_odm_overlay.dtb_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3767-0002+p3768-0000.android; \
 		 $(P3766-0002_SIGNED_PATH)/qspi_bootblob_ver.txt VER 20 0 p3767-0002+p3768-0000.android; \
 		 $(P3766-0003_SIGNED_PATH)/mb1_t234_prod_aligned_sigheader.bin.encrypt mb1 3531 2 p3767-0003+p3768-0000.android; \
 		 $(P3766-0003_SIGNED_PATH)/mb1_cold_boot_bct_MB1_sigheader.bct.encrypt MB1_BCT 20 0 p3767-0003+p3768-0000.android; \
@@ -319,7 +319,7 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3766-0003_SIGNED_PATH)/bpmp_t234-prod_sigheader.bin.encrypt bpmp-fw 3531 2 p3767-0003+p3768-0000.android; \
 		 $(P3766-0003_SIGNED_PATH)/tegra234-bpmp_sigheader.dtb.encrypt bpmp-fw-dtb 3531 0 p3767-0003+p3768-0000.android; \
 		 $(P3766-0003_SIGNED_PATH)/uefi_jetson_with_dtb_sigheader.bin.encrypt cpu-bootloader 20 0 p3767-0003+p3768-0000.android; \
-		 $(P3766-0003_SIGNED_PATH)/display-t234-dce_with_tegra234-p3767-0003-p3768-0000-a0-android_with_odm_overlay_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3767-0003+p3768-0000.android; \
+		 $(P3766-0003_SIGNED_PATH)/display-t234-dce_with_tegra234-p3767-0003-p3768-0000-a0-android_with_odm_overlay.dtb_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3767-0003+p3768-0000.android; \
 		 $(P3766-0003_SIGNED_PATH)/qspi_bootblob_ver.txt VER 20 0 p3767-0003+p3768-0000.android; \
 		 $(P3766-0004_SIGNED_PATH)/mb1_t234_prod_aligned_sigheader.bin.encrypt mb1 3531 2 p3767-0004+p3768-0000.android; \
 		 $(P3766-0004_SIGNED_PATH)/mb1_cold_boot_bct_MB1_sigheader.bct.encrypt MB1_BCT 20 0 p3767-0004+p3768-0000.android; \
@@ -328,7 +328,7 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3766-0004_SIGNED_PATH)/bpmp_t234-prod_sigheader.bin.encrypt bpmp-fw 3531 2 p3767-0004+p3768-0000.android; \
 		 $(P3766-0004_SIGNED_PATH)/tegra234-bpmp_sigheader.dtb.encrypt bpmp-fw-dtb 3531 0 p3767-0004+p3768-0000.android; \
 		 $(P3766-0004_SIGNED_PATH)/uefi_jetson_with_dtb_sigheader.bin.encrypt cpu-bootloader 20 0 p3767-0004+p3768-0000.android; \
-		 $(P3766-0004_SIGNED_PATH)/display-t234-dce_with_tegra234-p3767-0004-p3768-0000-a0-android_with_odm_overlay_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3767-0004+p3768-0000.android; \
+		 $(P3766-0004_SIGNED_PATH)/display-t234-dce_with_tegra234-p3767-0004-p3768-0000-a0-android_with_odm_overlay.dtb_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3767-0004+p3768-0000.android; \
 		 $(P3766-0004_SIGNED_PATH)/qspi_bootblob_ver.txt VER 20 0 p3767-0004+p3768-0000.android; \
 		 $(P3766-0005_SIGNED_PATH)/mb1_t234_prod_aligned_sigheader.bin.encrypt mb1 3531 2 p3767-0005+p3768-0000.android; \
 		 $(P3766-0005_SIGNED_PATH)/mb1_cold_boot_bct_MB1_sigheader.bct.encrypt MB1_BCT 20 0 p3767-0005+p3768-0000.android; \
@@ -337,7 +337,7 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3766-0005_SIGNED_PATH)/bpmp_t234-prod_sigheader.bin.encrypt bpmp-fw 3531 2 p3767-0005+p3768-0000.android; \
 		 $(P3766-0005_SIGNED_PATH)/tegra234-bpmp_sigheader.dtb.encrypt bpmp-fw-dtb 3531 0 p3767-0005+p3768-0000.android; \
 		 $(P3766-0005_SIGNED_PATH)/uefi_jetson_with_dtb_sigheader.bin.encrypt cpu-bootloader 20 0 p3767-0005+p3768-0000.android; \
-		 $(P3766-0005_SIGNED_PATH)/display-t234-dce_with_tegra234-p3767-0003-p3768-0000-a0-android_with_odm_overlay_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3767-0005+p3768-0000.android; \
+		 $(P3766-0005_SIGNED_PATH)/display-t234-dce_with_tegra234-p3767-0003-p3768-0000-a0-android_with_odm_overlay.dtb_aligned_blob_w_bin_sigheader.bin.encrypt dce-fw 3531 0 p3767-0005+p3768-0000.android; \
 		 $(P3766-0005_SIGNED_PATH)/qspi_bootblob_ver.txt VER 20 0 p3767-0005+p3768-0000.android"
 	PYTHONPATH=$$PYTHONPATH:$(dir $(CAPSULE_PATH)) python3 $(CAPSULE_PATH)/GenerateCapsule.py -v --encode --monotonic-count 1 --fw-version "0x00000000" --lsv "0x00000000" --guid "bf0d4599-20d4-414e-b2c5-3595b1cda402" --signer-private-cert "$(CAPSULE_PRIVATE)" --other-public-cert "$(CAPSULE_OTHER)" --trusted-public-cert "$(CAPSULE_TRUSTED)" -o "$@" "$(dir $@)/ota.blob"
 
