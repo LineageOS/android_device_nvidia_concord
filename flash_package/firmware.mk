@@ -1,8 +1,8 @@
 LOCAL_PATH := $(call my-dir)
 
-TEGRAFLASH_PATH := $(BUILD_TOP)/vendor/nvidia/common/r35/tegraflash
-T234_BL         := $(BUILD_TOP)/vendor/nvidia/t234/r35/bootloader
-CONCORD_BCT     := $(BUILD_TOP)/vendor/nvidia/concord/r35/BCT
+TEGRAFLASH_PATH := $(BUILD_TOP)/vendor/nvidia/common/r36/tegraflash
+T234_BL         := $(BUILD_TOP)/vendor/nvidia/t234/r36/bootloader
+CONCORD_BCT     := $(BUILD_TOP)/vendor/nvidia/concord/r36/BCT
 CONCORD_FLASH   := $(BUILD_TOP)/device/nvidia/concord/flash_package
 COMMON_FLASH    := $(BUILD_TOP)/device/nvidia/tegra-common/flash_package
 
