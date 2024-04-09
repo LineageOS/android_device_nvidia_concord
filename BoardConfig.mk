@@ -75,9 +75,18 @@ TARGET_KERNEL_CONFIG           := tegra_android_defconfig
 BOARD_KERNEL_IMAGE_NAME        := Image
 TARGET_KERNEL_ADDITIONAL_FLAGS := "NV_BUILD_KERNEL_OPTIONS=$(TARGET_TEGRA_KERNEL)"
 
+KERNEL_CC := \
+    CC=$(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)gcc \
+    CXX=$(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)g++ \
+    LD=$(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)ld \
+    AR=$(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)ar \
+    OBJCOPY=$(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)objcopy \
+    OBJDUMP=$(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)objdump
+
 TARGET_KERNEL_EXT_MODULE_ROOT := kernel/nvidia
 TARGET_KERNEL_EXT_MODULES := \
-    nvgpu/drivers/gpu/nvgpu:kbuild
+    nvgpu/drivers/gpu/nvgpu:kbuild \
+    display
 include device/nvidia/concord/modules.mk
 
 # Manifest

@@ -89,9 +89,6 @@ PRODUCT_PACKAGES += \
 # Kernel
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 TARGET_FORCE_PREBUILT_KERNEL := true
-else
-PRODUCT_PACKAGES += \
-    nvidia-display
 endif
 
 # Light
