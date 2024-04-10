@@ -1,0 +1,5 @@
+on property:init.svc.vendor.lkm_loader=stopped
+    write /dev/nvgpu/igpu0/power 1
+
+on init
+    setprop ro.vendor.hwc.use_overlay_planes 0
