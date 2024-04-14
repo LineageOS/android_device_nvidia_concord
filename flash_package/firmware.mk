@@ -124,7 +124,7 @@ $(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(FDTPUT_HOST) $(DTC_HOST)
 	cat $(strip $1)/bytes.txt >> $(strip $1)/qspi_bootblob_ver.txt
 	echo -n " CRC32:" >> $(strip $1)/qspi_bootblob_ver.txt
 	cat $(strip $1)/crc.txt >> $(strip $1)/qspi_bootblob_ver.txt
-	sed -i '/esp.img/d' $(strip $1)/$(strip $(2))
+	sed -i '/misc.txt/d' $(strip $1)/$(strip $(2))
 	sed -i '/recovery.img/d' $(strip $1)/$(strip $(2))
 	sed -i '/super_meta_only.img/d' $(strip $1)/$(strip $(2))
 	sed -i '/tegra234-p.*dtb/d' $(strip $1)/$(strip $(2))

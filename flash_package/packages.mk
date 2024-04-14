@@ -10,14 +10,10 @@ INSTALLED_KERNEL_TARGET        := $(PRODUCT_OUT)/kernel
 INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
 INSTALLED_SUPER_EMPTY_TARGET   := $(PRODUCT_OUT)/super_empty.img
 INSTALLED_TIANOCORE_TARGET     := $(PRODUCT_OUT)/tianocore.bin
-INSTALLED_RLAUNCHER_TARGET     := $(PRODUCT_OUT)/AndroidLauncher-recovery.efi
 INSTALLED_EDK2_DTBO_TARGET     := $(PRODUCT_OUT)/AndroidConfiguration.dtbo
 
 TOYBOX_HOST  := $(HOST_OUT_EXECUTABLES)/toybox
 AVBTOOL_HOST := $(HOST_OUT_EXECUTABLES)/avbtool
-MCOPY_HOST   := $(HOST_OUT_EXECUTABLES)/mcopy
-MMD_HOST     := $(HOST_OUT_EXECUTABLES)/mmd
-MKFSFAT_HOST := $(HOST_OUT_EXECUTABLES)/mformat
 LPFLASH_HOST := $(HOST_OUT_EXECUTABLES)/lpflash
 
 ifneq ($(TARGET_PREBUILT_KERNEL),)
@@ -37,7 +33,7 @@ LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
 _p3710_package_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
 _p3710_package_archive := $(_p3710_package_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 
-$(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(MCOPY_HOST) $(MMD_HOST) $(MKFSFAT_HOST) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_RLAUNCHER_TARGET) $(INSTALLED_EDK2_DTBO_TARGET)
+$(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET)
 	@mkdir -p $(dir $@)/tegraflash
 	@mkdir -p $(dir $@)/scripts
 	@cp $(TEGRAFLASH_PATH)/tegraflash* $(dir $@)/tegraflash/
@@ -68,11 +64,7 @@ $(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_
 	@cp $(DTB_PATH)/tegra234-p3701-overlay.dtbo $(dir $@)/
 	@cp $(CONCORD_BCT)/* $(dir $@)/
 	@rm -f $(dir $@)/*p3767*
-	@dd if=/dev/zero of=$(dir $@)/esp.img bs=1M count=64
-	@$(MKFSFAT_HOST) -F -i $(dir $@)/esp.img ::
-	@$(MMD_HOST) -i $(dir $@)/esp.img ::/EFI
-	@$(MMD_HOST) -i $(dir $@)/esp.img ::/EFI/BOOT
-	@$(MCOPY_HOST) -i $(dir $@)/esp.img $(INSTALLED_RLAUNCHER_TARGET) ::/EFI/BOOT/BOOTAA64.efi
+	@echo -n boot-recovery > $(dir $@)/misc.txt
 	@cd $(dir $@); tar -cJf $(abspath $@) *
 
 include $(BUILD_SYSTEM)/base_rules.mk
@@ -86,7 +78,7 @@ LOCAL_MODULE_PATH   := $(PRODUCT_OUT)
 _p3766_package_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
 _p3766_package_archive := $(_p3766_package_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
 
-$(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(MCOPY_HOST) $(MMD_HOST) $(MKFSFAT_HOST) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_RLAUNCHER_TARGET) $(INSTALLED_EDK2_DTBO_TARGET)
+$(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET)
 	@mkdir -p $(dir $@)/tegraflash
 	@mkdir -p $(dir $@)/scripts
 	@cp $(TEGRAFLASH_PATH)/tegraflash* $(dir $@)/tegraflash/
@@ -120,11 +112,7 @@ $(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_
 	@rm -f $(dir $@)/*p3701*
 	@cp $(CONCORD_BCT)/tegra234-mb2-bct-scr-p3701-0000-override.dts $(dir $@)/
 	@mv $(dir $@)/tegra234-bpmp-3767-0000-a02-3509-a02.dtb $(dir $@)/tegra234-bpmp-3767-0000-3509-a02.dtb
-	@dd if=/dev/zero of=$(dir $@)/esp.img bs=1M count=64
-	@$(MKFSFAT_HOST) -F -i $(dir $@)/esp.img ::
-	@$(MMD_HOST) -i $(dir $@)/esp.img ::/EFI
-	@$(MMD_HOST) -i $(dir $@)/esp.img ::/EFI/BOOT
-	@$(MCOPY_HOST) -i $(dir $@)/esp.img $(INSTALLED_RLAUNCHER_TARGET) ::/EFI/BOOT/BOOTAA64.efi
+	@echo -n boot-recovery > $(dir $@)/misc.txt
 	@cd $(dir $@); tar -cJf $(abspath $@) *
 
 include $(BUILD_SYSTEM)/base_rules.mk
