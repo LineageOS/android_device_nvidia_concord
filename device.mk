@@ -150,6 +150,7 @@ AB_OTA_PARTITIONS += \
     vbmeta \
     vbmeta_system \
     vendor \
+    vendor_boot \
     odm
 ifeq ($(TARGET_TEGRA_BOOTCTRL),efi)
 AB_OTA_POSTINSTALL_CONFIG += \
@@ -160,7 +161,6 @@ AB_OTA_POSTINSTALL_CONFIG += \
 PRODUCT_PACKAGES += \
     nv_bootloader_payload_updater \
     kernel_only_payload \
-    AndroidLauncher \
     TEGRA_BL.Cap
 endif
 endif
