@@ -89,9 +89,6 @@ TARGET_KERNEL_EXT_MODULES := \
     display
 include device/nvidia/concord/modules.mk
 
-# Manifest
-DEVICE_MANIFEST_FILE := device/nvidia/concord/manifest.xml
-
 # Recovery
 TARGET_RECOVERY_FSTAB := device/nvidia/concord/initfiles/fstab.concord
 TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
