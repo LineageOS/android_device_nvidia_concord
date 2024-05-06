@@ -28,6 +28,7 @@ TARGET_TEGRA_CAMERA   ?= rel-shield-r
 TARGET_TEGRA_HEALTH   ?= nobattery
 TARGET_TEGRA_KERNEL   ?= 5.10
 TARGET_TEGRA_KEYSTORE ?= software
+TARGET_TEGRA_THERMAL  ?= lineage
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= rtl8822ce
 
@@ -136,14 +137,15 @@ PRODUCT_PACKAGES += \
     nvpmodel_p3767_0004.conf
 
 # Thermal
+ifneq ($(TARGET_TEGRA_THERMAL),)
 PRODUCT_PACKAGES += \
-    android.hardware.thermal@1.0-service-nvidia \
     thermalhal.fett.xml \
     thermalhal.kryze.xml \
     thermalhal.rau.xml \
     thermalhal.saxon.xml \
     thermalhal.vizla.xml \
     thermalhal.wren.xml
+endif
 
 # Updater
 ifneq ($(TARGET_TEGRA_BOOTCTRL),)
