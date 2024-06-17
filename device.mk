@@ -62,7 +62,6 @@ PRODUCT_PACKAGES += \
     init.concord_common.rc \
     init.recovery.arvala.rc \
     init.recovery.concord.rc \
-    init.recovery.lkm.rc \
     power.arvala.rc \
     power.concord.rc
 
@@ -98,8 +97,7 @@ endif
 # Loadable kernel modules
 PRODUCT_PACKAGES += \
     init.lkm.rc \
-    lkm_loader \
-    lkm_loader_target
+    lkm_loader
 
 # Media config
 ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_OMX)),)

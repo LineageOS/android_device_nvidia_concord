@@ -16,6 +16,7 @@
 
 # Proprietary gpu driver
 BOARD_VENDOR_KERNEL_MODULES_LOAD := \
+    nvidia-drm \
     nvgpu
 
 # Tegra SPI
@@ -100,4 +101,5 @@ BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD := \
     hid-nvidia-blake \
     hid-jarvis-remote \
     tegra-bpmp-thermal \
-    pwm-fan
+    pwm-fan \
+    nvidia-drm.ko

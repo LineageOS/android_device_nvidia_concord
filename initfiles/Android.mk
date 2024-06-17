@@ -53,13 +53,6 @@ LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE       := init.recovery.lkm.rc
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := init.recovery.lkm.rc
-LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
 LOCAL_MODULE       := power.arvala.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_ODM_MODULE   := true
@@ -71,12 +64,4 @@ LOCAL_MODULE       := power.concord.rc
 LOCAL_MODULE_CLASS := ETC
 LOCAL_ODM_MODULE   := true
 LOCAL_SRC_FILES    := power.concord.rc
-include $(BUILD_PREBUILT)
-
-include $(CLEAR_VARS)
-LOCAL_MODULE        := lkm_loader_target
-LOCAL_SRC_FILES     := lkm_loader_target.sh
-LOCAL_MODULE_SUFFIX := .sh
-LOCAL_MODULE_CLASS  := EXECUTABLES
-LOCAL_VENDOR_MODULE := true
 include $(BUILD_PREBUILT)
