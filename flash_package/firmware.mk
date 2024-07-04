@@ -100,7 +100,7 @@ _p3766-0005_br_bct := $(P3766-0005_SIGNED_PATH)/br_bct_BR.bct
 define t234_bl_signing_rule
 $(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(FDTPUT_HOST) $(DTC_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET) $(TOYBOX_HOST) $(CPP_HOST)
 	@mkdir -p $(strip $1)
-	@cp $(CONCORD_FLASH)/$(strip $2) $(strip $1)/
+	@cp $(strip $2) $(strip $1)/
 	@cp $(CONCORD_BCT)/* $(strip $1)/
 	@cp $(CONCORD_FLASH)/*.dts $(strip $1)/
 	@cp $(T234_BL)/* $(strip $1)/
@@ -125,11 +125,11 @@ $(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(FDTPUT_HOST) $(DTC_HOST)
 	cat $(strip $1)/bytes.txt >> $(strip $1)/qspi_bootblob_ver.txt
 	echo -n " CRC32:" >> $(strip $1)/qspi_bootblob_ver.txt
 	cat $(strip $1)/crc.txt >> $(strip $1)/qspi_bootblob_ver.txt
-	sed -i '/misc.txt/d' $(strip $1)/$(strip $(2))
-	sed -i '/recovery.img/d' $(strip $1)/$(strip $(2))
-	sed -i '/super_meta_only.img/d' $(strip $1)/$(strip $(2))
-	sed -i '/tegra234-p.*dtb/d' $(strip $1)/$(strip $(2))
-	sed -i '/vbmeta_skip.img/d' $(strip $1)/$(strip $(2))
+	sed -i '/misc.txt/d' $(strip $1)/$(notdir $(strip $(2)))
+	sed -i '/recovery.img/d' $(strip $1)/$(notdir $(strip $(2)))
+	sed -i '/super_meta_only.img/d' $(strip $1)/$(notdir $(strip $(2)))
+	sed -i '/tegra234-p.*dtb/d' $(strip $1)/$(notdir $(strip $(2)))
+	sed -i '/vbmeta_skip.img/d' $(strip $1)/$(notdir $(strip $(2)))
 	cd $(strip $1); PYTHONDONTWRITEBYTECODE=1 PATH=$(abspath $(HOST_OUT_EXECUTABLES)):$(BUILD_TOP)/prebuilts/build-tools/path/linux-x86:$$PATH $(TEGRAFLASH_PATH)/tegraflash.py \
 		--chip 0x23 \
 		--bl uefi_jetson_with_dtb.bin \
@@ -137,7 +137,7 @@ $(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(FDTPUT_HOST) $(DTC_HOST)
 		--concat_cpubl_bldtb \
 		--cpubl uefi_jetson.bin \
 		--cmd "sign" \
-		--cfg $(strip $(2)) \
+		--cfg $(notdir $(strip $(2))) \
 		--odmdata $(subst $(SPACE),$(COMMA),$(6)) \
 		--overlay_dtb AndroidConfiguration.dtbo,$(subst $(SPACE),,$(foreach dtbo,$(strip $(7)),$(DTB_PATH)/$(dtbo),)) \
 		--bldtb $(strip $(5)) \
@@ -162,15 +162,16 @@ endef
 
 # $1 Intermediates path
 # $2 Bpmp dtb sku
-# $3 Kernel dtb sku
-# $4 Sdram sku
+# $3 Sdram sku
+# $4 Partition xml
+# $5 Kernel dtb
 define p3710_bl_signing_rule
 $(call t234_bl_signing_rule, \
-  $(strip $1), \
-  flash_android_t234_sdmmc.xml, \
+  $(strip $(1)), \
+  $(strip $(4)), \
   TE990M-A1, \
-  tegra234-bpmp-3701-$(strip $2)-3737-0000.dtb, \
-  tegra234-p3701-$(strip $3)-p3737-0000.dtb, \
+  tegra234-bpmp-3701-$(strip $(2))-3737-0000.dtb, \
+  $(strip $(5)), \
   gbe-uphy-config-22 hsstp-lane-map-3 nvhs-uphy-config-0 hsio-uphy-config-0 gbe0-enable-10g, \
   tegra234-p3737-overlay.dtbo tegra234-p3701-overlay.dtbo, \
   tegra234-mb1-bct-device-p3701-0000.dts, \
@@ -182,34 +183,34 @@ $(call t234_bl_signing_rule, \
   tegra234-mb1-bct-cprod-p3701-0000.dts, \
   tegra234-mb1-bct-prod-p3701-0000.dts, \
   tegra234-mb2-bct-scr-p3701-0000-lineage.dts, \
-  tegra234-p3701-$(strip $4)-wb0sdram-l4t.dts, \
+  tegra234-p3701-$(strip $(3))-wb0sdram-l4t.dts, \
   tegra234-mb1-bct-reset-p3701-0000.dts, \
   tegra234-mb1-bct-uphylane-si.dtsi, \
   tegra234-br-bct-p3701-0000.dts, \
   tegra234-br-bct_b-p3701-0000.dts, \
   tegra234-mb2-bct-misc-p3701-0000.dts, \
-  tegra234-p3701-$(strip $4)-sdram-l4t.dts, \
+  tegra234-p3701-$(strip $(3))-sdram-l4t.dts, \
   3701, \
-  $(strip $2), \
+  $(strip $(2)), \
   3737, \
   0 \
 )
 endef
 
 # $1 Intermediates path
-# $2 Partition xml variant
-# $3 Bpmp fw variant
-# $4 Bpmp dtb sku
-# $5 Kernel dtb sku
-# $6 Sdram sku
-# $7 Module sku
+# $2 Bpmp fw variant
+# $3 Bpmp dtb sku
+# $4 Sdram sku
+# $5 Module sku
+# $6 Partition xml
+# $7 Kernel dtb
 define p3766_bl_signing_rule
 $(call t234_bl_signing_rule, \
-  $(strip $1), \
-  flash_android_t234_qspi_$(strip $2).xml, \
-  $(strip $3), \
-  tegra234-bpmp-3767-$(strip $4)-3509-a02.dtb, \
-  tegra234-p3767-$(strip $5)-p3768-0000-a0-android.dtb, \
+  $(strip $(1)), \
+  $(strip $(6)), \
+  $(strip $(2)), \
+  tegra234-bpmp-3767-$(strip $(3))-3509-a02.dtb, \
+  $(strip $(7)), \
   gbe-uphy-config-8 hsstp-lane-map-3 hsio-uphy-config-0, \
   tegra234-p3767-overlay.dtbo, \
   tegra234-mb1-bct-device-p3767-0000.dts, \
@@ -221,30 +222,34 @@ $(call t234_bl_signing_rule, \
   tegra234-mb1-bct-cprod-p3767-0000.dts, \
   tegra234-mb1-bct-prod-p3767-0000.dts, \
   tegra234-mb2-bct-scr-p3767-0000-lineage.dts, \
-  tegra234-p3767-$(strip $6)-wb0sdram-l4t.dts, \
+  tegra234-p3767-$(strip $(4))-wb0sdram-l4t.dts, \
   tegra234-mb1-bct-reset-p3767-0000.dts, \
   tegra234-mb1-bct-uphylane-si.dtsi, \
   tegra234-br-bct-p3767-0000-l4t.dts, \
   tegra234-br-bct_b-p3767-0000-l4t.dts, \
   tegra234-mb2-bct-misc-p3767-0000.dts, \
-  tegra234-p3767-$(strip $6)-sdram-l4t.dts, \
+  tegra234-p3767-$(strip $(4))-sdram-l4t.dts, \
   3767, \
-  $(strip $7), \
+  $(strip $(5)), \
   3768, \
   0 \
 )
 endef
 
-$(eval $(call p3710_bl_signing_rule, $(P3710-0000_SIGNED_PATH), 0000, 0000, 0000))
-$(eval $(call p3710_bl_signing_rule, $(P3710-0004_SIGNED_PATH), 0004, 0004, 0000))
-$(eval $(call p3710_bl_signing_rule, $(P3710-0005_SIGNED_PATH), 0005, 0000, 0005))
+$(eval $(call p3710_bl_signing_rule, $(P3710-0000_SIGNED_PATH), 0000, 0000, $(CONCORD_FLASH)/flash_android_t234_sdmmc.xml, tegra234-p3701-0000-p3737-0000.dtb))
+$(eval $(call p3710_bl_signing_rule, $(P3710-0004_SIGNED_PATH), 0004, 0000, $(CONCORD_FLASH)/flash_android_t234_sdmmc.xml, tegra234-p3701-0004-p3737-0000.dtb))
+$(eval $(call p3710_bl_signing_rule, $(P3710-0005_SIGNED_PATH), 0005, 0005, $(CONCORD_FLASH)/flash_android_t234_sdmmc.xml, tegra234-p3701-0000-p3737-0000.dtb))
 
-$(eval $(call p3766_bl_signing_rule, $(P3766-0000_SIGNED_PATH), nvme, TE990M-A1, 0000-a02, 0000, 0000, 0000))
-$(eval $(call p3766_bl_signing_rule, $(P3766-0001_SIGNED_PATH), nvme, TE990M-A1, 0001,     0001, 0001, 0001))
-$(eval $(call p3766_bl_signing_rule, $(P3766-0002_SIGNED_PATH), sd,   TE990M-A1, 0000-a02, 0000, 0000, 0002))
-$(eval $(call p3766_bl_signing_rule, $(P3766-0003_SIGNED_PATH), nvme, TE950M-A1, 0003,     0003, 0001, 0003))
-$(eval $(call p3766_bl_signing_rule, $(P3766-0004_SIGNED_PATH), nvme, TE950M-A1, 0004,     0004, 0004, 0004))
-$(eval $(call p3766_bl_signing_rule, $(P3766-0005_SIGNED_PATH), sd,   TE950M-A1, 0003,     0003, 0001, 0005))
+$(eval $(call p3766_bl_signing_rule, $(P3766-0000_SIGNED_PATH), TE990M-A1, 0000-a02, 0000, 0000, $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml, tegra234-p3767-0000-p3768-0000-a0-android.dtb))
+$(eval $(call p3766_bl_signing_rule, $(P3766-0001_SIGNED_PATH), TE990M-A1, 0001,     0001, 0001, $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml, tegra234-p3767-0001-p3768-0000-a0-android.dtb))
+$(eval $(call p3766_bl_signing_rule, $(P3766-0002_SIGNED_PATH), TE990M-A1, 0000-a02, 0000, 0002, $(CONCORD_FLASH)/flash_android_t234_qspi_sd.xml,   tegra234-p3767-0000-p3768-0000-a0-android.dtb))
+$(eval $(call p3766_bl_signing_rule, $(P3766-0003_SIGNED_PATH), TE950M-A1, 0003,     0001, 0003, $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml, tegra234-p3767-0003-p3768-0000-a0-android.dtb))
+$(eval $(call p3766_bl_signing_rule, $(P3766-0004_SIGNED_PATH), TE950M-A1, 0004,     0004, 0004, $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml, tegra234-p3767-0004-p3768-0000-a0-android.dtb))
+$(eval $(call p3766_bl_signing_rule, $(P3766-0005_SIGNED_PATH), TE950M-A1, 0003,     0001, 0005, $(CONCORD_FLASH)/flash_android_t234_qspi_sd.xml,   tegra234-p3767-0003-p3768-0000-a0-android.dtb))
+
+ifneq ($(TEGRA_DERIVATIVE_FIRMWARE),)
+include $(TEGRA_DERIVATIVE_FIRMWARE)
+endif
 
 $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_bct) $(_p3766-0000_br_bct) $(_p3766-0001_br_bct) $(_p3766-0002_br_bct) $(_p3766-0003_br_bct) $(_p3766-0004_br_bct) $(_p3766-0005_br_bct)
 	@mkdir -p $(dir $@)
@@ -261,6 +266,7 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3710-0000_SIGNED_PATH)/camera-rtcpu-t234-rce_sigheader.img.encrypt rce-fw 3531 0 common; \
 		 $(P3710-0000_SIGNED_PATH)/adsp-fw_sigheader.bin.encrypt adsp-fw 3531 0 common; \
 		 $(P3710-0000_SIGNED_PATH)/xusb_t234_prod_sigheader.bin.encrypt xusb-fw 3531 2 common; \
+		 $(TEGRA_FIRMWARE_ADDITIONS) \
 		 $(P3710-0000_SIGNED_PATH)/mb1_t234_prod_aligned_sigheader.bin.encrypt mb1 3531 2 p3701-0000+p3737-0000.android; \
 		 $(P3710-0000_SIGNED_PATH)/mb1_cold_boot_bct_MB1_sigheader.bct.encrypt MB1_BCT 20 0 p3701-0000+p3737-0000.android; \
 		 $(P3710-0000_SIGNED_PATH)/mem_coldboot_sigheader.bct.encrypt MEM_BCT 20 0 p3701-0000+p3737-0000.android; \
