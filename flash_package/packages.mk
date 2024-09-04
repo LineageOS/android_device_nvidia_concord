@@ -20,7 +20,9 @@ MMD_HOST     := $(HOST_OUT_EXECUTABLES)/mmd
 MKFSFAT_HOST := $(HOST_OUT_EXECUTABLES)/mformat
 LPFLASH_HOST := $(HOST_OUT_EXECUTABLES)/lpflash
 
-ifneq ($(findstring dtstree,$(TARGET_KERNEL_ADDITIONAL_FLAGS)),)
+ifneq ($(TARGET_PREBUILT_KERNEL),)
+DTB_PATH := $(dir $(TARGET_PREBUILT_KERNEL))
+else ifneq ($(findstring dtstree,$(TARGET_KERNEL_ADDITIONAL_FLAGS)),)
 DTB_PATH := $(abspath $(KERNEL_OUT)/../lineage-oot/device-tree/platform/generic-dts/t23x/lineage)
 else
 DTB_PATH := $(abspath $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia)
