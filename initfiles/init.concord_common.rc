@@ -36,7 +36,7 @@ on boot
     setprop sys.usb.configfs 1
 
 on init
-    enable btlinux-1.1
+    enable vendor.bluetooth-default
 
     mount efivarfs none /sys/firmware/efi/efivars context=u:object_r:sysfs_efivar:s0
     mkdir /mnt/vendor/esp
