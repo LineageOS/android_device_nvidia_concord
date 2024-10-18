@@ -89,6 +89,10 @@ endif
 PRODUCT_PACKAGES += \
     fastbootd
 
+# Fingerprint override
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BuildFingerprint=NVIDIA/concord/concord:11/RQ1A.210105.003/7825230_3167.5736:user/release-keys
+
 # Kernel
 ifneq ($(TARGET_PREBUILT_KERNEL),)
 TARGET_FORCE_PREBUILT_KERNEL := true
