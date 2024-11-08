@@ -137,6 +137,10 @@ PRODUCT_COPY_FILES += \
     $(foreach variant,$(TARGET_TEGRA_VARIANTS),device/nvidia/concord/thermal/thermalhal.$(variant).xml:$(TARGET_COPY_OUT_VENDOR)/etc/thermalhal.$(variant).xml)
 endif
 
+# Trusted firmware
+ATF_PATH   ?= hardware/nvidia/t23x/arm-trusted-firmware
+ATF_PARAMS ?= BRANCH_PROTECTION=3 ARM_ARCH_MINOR=3
+
 # Updater
 ifneq ($(TARGET_TEGRA_BOOTCTRL),)
 AB_OTA_PARTITIONS += \

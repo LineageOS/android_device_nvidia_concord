@@ -110,7 +110,7 @@ declare -a FLASH_CMD_FLASH=(
   --sdram_config tegra234-p3701-${SDRAMSKU}-sdram-l4t.dts
   --bct_backup
   --boot_chain A
-  --bins "psc_fw pscfw_t234_prod.bin; mts_mce mce_flash_o10_cr_prod.bin; tsec_fw tsec_t234.bin; mb2_applet applet_t234.bin; mb2_bootloader mb2_t234.bin; xusb_fw xusb_t234_prod.bin; pva_fw nvpva_020.fw; dce_fw display-t234-dce.bin; nvdec nvdec_t234_prod.fw; bpmp_fw bpmp_t234-prod.bin; bpmp_fw_dtb tegra234-bpmp.dtb; rce_fw camera-rtcpu-t234-rce.img; ape_fw adsp-fw.bin; spe_fw spe_t234.bin; tos tos-optee_t234.img; eks eks.img");
+  --bins "psc_fw pscfw_t234_prod.bin; mts_mce mce_flash_o10_cr_prod.bin; tsec_fw tsec_t234.bin; mb2_applet applet_t234.bin; mb2_bootloader mb2_t234.bin; xusb_fw xusb_t234_prod.bin; pva_fw nvpva_020.fw; dce_fw display-t234-dce.bin; nvdec nvdec_t234_prod.fw; bpmp_fw bpmp_t234-prod.bin; bpmp_fw_dtb tegra234-bpmp.dtb; rce_fw camera-rtcpu-t234-rce.img; ape_fw adsp-fw.bin; spe_fw spe_t234.bin; tos tos.img; eks eks.img");
 
 tegraflash.py \
   "${FLASH_CMD_FLASH[@]}" \
