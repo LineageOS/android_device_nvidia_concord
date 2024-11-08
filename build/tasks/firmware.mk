@@ -26,6 +26,7 @@ CAPSULE_OTHER   ?= $(CAPSULE_CERTS)/TestSub.pub.pem
 CAPSULE_TRUSTED ?= $(CAPSULE_CERTS)/TestRoot.pub.pem
 
 INSTALLED_KERNEL_TARGET    := $(PRODUCT_OUT)/kernel
+INSTALLED_TOS_TARGET       := $(PRODUCT_OUT)/tos-$(if $(filter software,$(TARGET_TEGRA_TOS)),mon-only,$(TARGET_TEGRA_TOS)).img
 INSTALLED_TIANOCORE_TARGET := $(PRODUCT_OUT)/tianocore.bin
 INSTALLED_EDK2_DTBO_TARGET := $(PRODUCT_OUT)/AndroidConfiguration.dtbo
 
@@ -106,12 +107,14 @@ _p3766-0005_br_bct := $(P3766-0005_SIGNED_PATH)/br_bct_BR.bct
 # $26 Carrier board id
 # $27 Carrier sku
 define t234_bl_signing_rule
-$(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(FDTPUT_HOST) $(DTC_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET) $(TOYBOX_HOST) $(CPP_HOST)
+$(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(INSTALLED_TOS_TARGET) $(FDTPUT_HOST) $(DTC_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET) $(TOYBOX_HOST) $(CPP_HOST)
 	@mkdir -p $(strip $1)
 	@cp $(strip $2) $(strip $1)/
 	@cp $(CONCORD_BCT)/* $(strip $1)/
 	@cp $(CONCORD_FLASH)/*.dts $(strip $1)/
 	@cp $(T234_BL)/* $(strip $1)/
+	@rm $(strip $1)/tos-optee_t234.img
+	@cp $(INSTALLED_TOS_TARGET) $(strip $1)/tos.img
 	@rm $(strip $1)/BOOTAA64.efi
 	@rm $(strip $1)/uefi_jetson.bin
 	@cp $(INSTALLED_TIANOCORE_TARGET) $(strip $1)/uefi_jetson.bin
@@ -269,7 +272,7 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3710-0000_SIGNED_PATH)/sc7_t234_prod_sigheader.bin.encrypt sc7 3531 2 common; \
 		 $(P3710-0000_SIGNED_PATH)/psc_rf_t234_prod_sigheader.bin.encrypt pscrf 3531 2 common; \
 		 $(P3710-0000_SIGNED_PATH)/mb2rf_t234_sigheader.bin.encrypt mb2rf 3531 0 common; \
-		 $(P3710-0000_SIGNED_PATH)/tos-optee_t234_sigheader.img.encrypt secure-os 3531 0 common; \
+		 $(P3710-0000_SIGNED_PATH)/tos_sigheader.img.encrypt secure-os 3531 0 common; \
 		 $(P3710-0000_SIGNED_PATH)/spe_t234_sigheader.bin.encrypt spe-fw 3531 0 common; \
 		 $(P3710-0000_SIGNED_PATH)/camera-rtcpu-t234-rce_sigheader.img.encrypt rce-fw 3531 0 common; \
 		 $(P3710-0000_SIGNED_PATH)/adsp-fw_sigheader.bin.encrypt adsp-fw 3531 0 common; \
