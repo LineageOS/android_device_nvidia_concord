@@ -37,6 +37,8 @@ TARGET_TEGRA_THERMAL  ?= lineage
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= rtl8822ce
 
+ATF_PATH ?= hardware/nvidia/arm-trusted-firmware
+
 include device/nvidia/t234-common/t234.mk
 
 # System properties

@@ -22,6 +22,7 @@ COMMON_FLASH    := $(BUILD_TOP)/device/nvidia/tegra-common/flash_package
 INSTALLED_KERNEL_TARGET        := $(PRODUCT_OUT)/kernel
 INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
 INSTALLED_SUPER_EMPTY_TARGET   := $(PRODUCT_OUT)/super_empty.img
+INSTALLED_TOS_TARGET           := $(PRODUCT_OUT)/tos-$(if $(filter software,$(TARGET_TEGRA_TOS)),mon-only,$(TARGET_TEGRA_TOS)).img
 INSTALLED_TIANOCORE_TARGET     := $(PRODUCT_OUT)/tianocore.bin
 INSTALLED_EDK2_DTBO_TARGET     := $(PRODUCT_OUT)/AndroidConfiguration.dtbo
 
@@ -39,7 +40,7 @@ endif
 
 _p3710_package_archive := $(call intermediates-dir-for,ETC,p3710_flash_package)/p3710_flash_package.txz
 
-$(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET)
+$(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET) $(INSTALLED_TOS_TARGET)
 	@mkdir -p $(dir $@)/tegraflash
 	@mkdir -p $(dir $@)/scripts
 	@cp $(TEGRAFLASH_PATH)/tegraflash* $(dir $@)/tegraflash/
@@ -55,6 +56,8 @@ $(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_
 	$(TOYBOX_HOST) sed -i "s/REPLACEME/$${LINEAGEVER}/" $(dir $@)/flash.sh
 	@cp $(CONCORD_FLASH)/flash_android_t234_sdmmc.xml $(dir $@)/
 	@cp $(T234_BL)/* $(dir $@)/
+	@rm $(dir $@)/tos-optee_t234.img
+	@cp $(INSTALLED_TOS_TARGET) $(dir $@)/tos.img
 	@rm $(dir $@)/BOOTAA64.efi
 	@rm $(dir $@)/uefi_jetson.bin
 	@cp $(INSTALLED_TIANOCORE_TARGET) $(dir $@)/uefi_jetson.bin
@@ -83,7 +86,7 @@ p3710_flash_package: $(PRODUCT_OUT)/p3710_flash_package.txz
 
 _p3766_package_archive := $(call intermediates-dir-for,ETC,p3766_flash_package)/p3766_flash_package.txz
 
-$(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET)
+$(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET) $(INSTALLED_TOS_TARGET)
 	@mkdir -p $(dir $@)/tegraflash
 	@mkdir -p $(dir $@)/scripts
 	@cp $(TEGRAFLASH_PATH)/tegraflash* $(dir $@)/tegraflash/
@@ -100,6 +103,8 @@ $(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_
 	@cp $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml $(dir $@)/
 	@cp $(CONCORD_FLASH)/flash_android_t234_qspi_sd.xml $(dir $@)/
 	@cp $(T234_BL)/* $(dir $@)/
+	@rm $(dir $@)/tos-optee_t234.img
+	@cp $(INSTALLED_TOS_TARGET) $(dir $@)/tos.img
 	@rm $(dir $@)/BOOTAA64.efi
 	@rm $(dir $@)/uefi_jetson.bin
 	@cp $(INSTALLED_TIANOCORE_TARGET) $(dir $@)/uefi_jetson.bin
