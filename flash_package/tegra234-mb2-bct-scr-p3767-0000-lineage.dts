@@ -1,0 +1,15 @@
+/dts-v1/;
+
+#include "tegra234-mb2-bct-scr-p3767-0000.dts"
+
+/ {
+    tfc {
+        reg@5138 { /* CBB_CENTRAL_CBB_FIREWALL_QSPI0_BLF, READ_CTL */
+            value = <0x0010000b>;
+        };
+
+        reg@5139 { /* CBB_CENTRAL_CBB_FIREWALL_QSPI0_BLF, WRITE_CTL */
+            value = <0x0010000b>;
+        };
+    };
+};

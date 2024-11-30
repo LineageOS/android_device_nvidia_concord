@@ -63,6 +63,7 @@ $(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_
 	@cp $(DTB_PATH)/tegra234-p3737-overlay.dtbo $(dir $@)/
 	@cp $(DTB_PATH)/tegra234-p3701-overlay.dtbo $(dir $@)/
 	@cp $(CONCORD_BCT)/* $(dir $@)/
+	@cp $(CONCORD_FLASH)/tegra234-mb2-bct-scr-p3701-0000-lineage.dts $(dir $@)/
 	@rm -f $(dir $@)/*p3767*
 	@echo -n boot-recovery > $(dir $@)/misc.txt
 	@cd $(dir $@); tar -cJf $(abspath $@) *
@@ -111,6 +112,7 @@ $(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_
 	@cp $(CONCORD_BCT)/* $(dir $@)/
 	@rm -f $(dir $@)/*p3701*
 	@cp $(CONCORD_BCT)/tegra234-mb2-bct-scr-p3701-0000-override.dts $(dir $@)/
+	@cp $(CONCORD_FLASH)/tegra234-mb2-bct-scr-p3767-0000-lineage.dts $(dir $@)/
 	@mv $(dir $@)/tegra234-bpmp-3767-0000-a02-3509-a02.dtb $(dir $@)/tegra234-bpmp-3767-0000-3509-a02.dtb
 	@echo -n boot-recovery > $(dir $@)/misc.txt
 	@cd $(dir $@); tar -cJf $(abspath $@) *

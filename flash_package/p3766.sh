@@ -119,7 +119,7 @@ declare -a FLASH_CMD_FLASH=(
   --pmc_config tegra234-mb1-bct-padvoltage-p3767-dp-a03.dtsi
   --deviceprod_config tegra234-mb1-bct-cprod-p3767-0000.dts
   --prod_config tegra234-mb1-bct-prod-p3767-0000.dts
-  --scr_config tegra234-mb2-bct-scr-p3767-0000.dts
+  --scr_config tegra234-mb2-bct-scr-p3767-0000-lineage.dts
   --wb0sdram_config tegra234-p3767-${SDRAMSKU}-wb0sdram-l4t.dts
   --br_cmd_config tegra234-mb1-bct-reset-p3767-0000.dts
   --uphy tegra234-mb1-bct-uphylane-si.dtsi

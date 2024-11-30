@@ -102,6 +102,7 @@ $(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(FDTPUT_HOST) $(DTC_HOST)
 	@mkdir -p $(strip $1)
 	@cp $(CONCORD_FLASH)/$(strip $2) $(strip $1)/
 	@cp $(CONCORD_BCT)/* $(strip $1)/
+	@cp $(CONCORD_FLASH)/*.dts $(strip $1)/
 	@cp $(T234_BL)/* $(strip $1)/
 	@rm $(strip $1)/BOOTAA64.efi
 	@rm $(strip $1)/uefi_jetson.bin
@@ -180,7 +181,7 @@ $(call t234_bl_signing_rule, \
   tegra234-mb1-bct-padvoltage-p3701-0000-a04.dtsi, \
   tegra234-mb1-bct-cprod-p3701-0000.dts, \
   tegra234-mb1-bct-prod-p3701-0000.dts, \
-  tegra234-mb2-bct-scr-p3701-0000.dts, \
+  tegra234-mb2-bct-scr-p3701-0000-lineage.dts, \
   tegra234-p3701-$(strip $4)-wb0sdram-l4t.dts, \
   tegra234-mb1-bct-reset-p3701-0000.dts, \
   tegra234-mb1-bct-uphylane-si.dtsi, \
@@ -219,7 +220,7 @@ $(call t234_bl_signing_rule, \
   tegra234-mb1-bct-padvoltage-p3767-dp-a03.dtsi, \
   tegra234-mb1-bct-cprod-p3767-0000.dts, \
   tegra234-mb1-bct-prod-p3767-0000.dts, \
-  tegra234-mb2-bct-scr-p3767-0000.dts, \
+  tegra234-mb2-bct-scr-p3767-0000-lineage.dts, \
   tegra234-p3767-$(strip $6)-wb0sdram-l4t.dts, \
   tegra234-mb1-bct-reset-p3767-0000.dts, \
   tegra234-mb1-bct-uphylane-si.dtsi, \
