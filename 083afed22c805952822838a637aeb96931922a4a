@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e7cff0d_2a44ef78",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 14048
+      },
+      "writtenOn": "2024-12-03T06:16:28Z",
+      "side": 1,
+      "message": "Fixes boot when optee isn\u0027t included.",
+      "revId": "083afed22c805952822838a637aeb96931922a4a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
