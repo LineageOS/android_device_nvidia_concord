@@ -1,5 +1,18 @@
-LOCAL_PATH := $(call my-dir)
+# Copyright (C) 2022-2024 The LineageOS Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
+ifeq ($(TARGET_REFERENCE_DEVICE), concord)
 TEGRAFLASH_PATH := $(BUILD_TOP)/vendor/nvidia/common/r36/tegraflash
 T234_BL         := $(BUILD_TOP)/vendor/nvidia/t234/r36/bootloader
 CONCORD_BCT     := $(BUILD_TOP)/vendor/nvidia/concord/r36/BCT
@@ -41,13 +54,8 @@ CPP_HOST := $(HOST_OUT_EXECUTABLES)/cpp
 $(CPP_HOST):
 	ln -sf $(KERNEL_TOOLCHAIN)/$(KERNEL_TOOLCHAIN_PREFIX)cpp.br_real $@
 
-include $(CLEAR_VARS)
-LOCAL_MODULE               := TEGRA_BL.Cap
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_MODULE_RELATIVE_PATH := firmware
-
-_concord_blob_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
-_concord_blob := $(_concord_blob_intermediates)/$(LOCAL_MODULE)$(LOCAL_MODULE_SUFFIX)
+_concord_blob_intermediates := $(call intermediates-dir-for,ETC,TEGRA_BL)
+_concord_blob := $(_concord_blob_intermediates)/TEGRA_BL.Cap
 
 P3710-0000_SIGNED_PATH := $(_concord_blob_intermediates)/p3710-0000-signed
 P3710-0004_SIGNED_PATH := $(_concord_blob_intermediates)/p3710-0004-signed
@@ -350,15 +358,13 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3766-0005_SIGNED_PATH)/qspi_bootblob_ver.txt VER 20 0 p3767-0005+p3768-0000.android"
 	PYTHONPATH=$$PYTHONPATH:$(dir $(CAPSULE_PATH)) python3 $(CAPSULE_PATH)/GenerateCapsule.py -v --encode --monotonic-count 1 --fw-version "0x00000000" --lsv "0x00000000" --guid "bf0d4599-20d4-414e-b2c5-3595b1cda402" --signer-private-cert "$(CAPSULE_PRIVATE)" --other-public-cert "$(CAPSULE_OTHER)" --trusted-public-cert "$(CAPSULE_TRUSTED)" -o "$@" "$(dir $@)/ota.blob"
 
-include $(BUILD_SYSTEM)/base_rules.mk
+$(TARGET_OUT_ETC)/firmware/TEGRA_BL.Cap: $(_concord_blob)
+	$(hide) cp $< $@
 
-include $(CLEAR_VARS)
-LOCAL_MODULE               := kernel_only_payload
-LOCAL_MODULE_CLASS         := ETC
-LOCAL_MODULE_RELATIVE_PATH := firmware
+.PHONY: TEGRA_BL.Cap
+TEGRA_BL.Cap: $(TARGET_OUT_ETC)/firmware/TEGRA_BL.Cap
 
-_kernel_blob_intermediates := $(call intermediates-dir-for,$(LOCAL_MODULE_CLASS),$(LOCAL_MODULE))
-_kernel_blob := $(_kernel_blob_intermediates)/$(LOCAL_MODULE)
+_kernel_blob := $(call intermediates-dir-for,ETC,kernel_only_payload)/kernel_only_payload
 
 $(_kernel_blob): $(INSTALLED_KERNEL_TARGET)
 	@mkdir -p $(dir $@)
@@ -374,4 +380,11 @@ $(_kernel_blob): $(INSTALLED_KERNEL_TARGET)
 		 $(DTB_PATH)/tegra234-p3767-0003-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0005+p3768-0000.android"
 	@mv $(dir $@)/ota.blob $@
 
-include $(BUILD_SYSTEM)/base_rules.mk
+$(TARGET_OUT_ETC)/firmware/kernel_only_payload: $(_kernel_blob)
+	$(hide) cp $< $@
+
+.PHONY: kernel_only_payload
+kernel_only_payload: $(TARGET_OUT_ETC)/firmware/kernel_only_payload
+
+$(call intermediates-dir-for,EXECUTABLES,nv_bootloader_payload_updater-efi)/nv_bootloader_payload_updater-efi: $(TARGET_OUT_ETC)/firmware/TEGRA_BL.Cap $(TARGET_OUT_ETC)/firmware/kernel_only_payload
+endif
