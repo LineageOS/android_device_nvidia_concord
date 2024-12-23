@@ -96,8 +96,9 @@ endif
 
 # Loadable kernel modules
 PRODUCT_PACKAGES += \
-    init.lkm.rc \
     lkm_loader
+PRODUCT_COPY_FILES += \
+    device/nvidia/tegra-common/initfiles/init.lkm.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.lkm.rc
 
 # Media config
 ifneq ($(filter rel-shield-r, $(TARGET_TEGRA_OMX)),)
@@ -110,19 +111,20 @@ endif
 
 # PHS
 ifneq ($(TARGET_TEGRA_PHS),)
-PRODUCT_PACKAGES += \
-    nvphsd.conf
+PRODUCT_COPY_FILES += \
+    device/nvidia/concord/nvphs/nvphsd.conf.t234:$(TARGET_COPY_OUT_ODM)/etc/nvphsd.conf
 endif
 
 # PModel
 PRODUCT_PACKAGES += \
-    nvpmodel \
-    nvpmodel_p3701_0000.conf \
-    nvpmodel_p3701_0004.conf \
-    nvpmodel_p3767_0000.conf \
-    nvpmodel_p3767_0001.conf \
-    nvpmodel_p3767_0003.conf \
-    nvpmodel_p3767_0004.conf
+    nvpmodel
+PRODUCT_COPY_FILES += \
+    device/nvidia/concord/nvpmodel/nvpmodel_p3701_0000.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3701_0000.conf \
+    device/nvidia/concord/nvpmodel/nvpmodel_p3701_0004.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3701_0004.conf \
+    device/nvidia/concord/nvpmodel/nvpmodel_p3767_0000.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0000.conf \
+    device/nvidia/concord/nvpmodel/nvpmodel_p3767_0001.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0001.conf \
+    device/nvidia/concord/nvpmodel/nvpmodel_p3767_0003.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0003.conf \
+    device/nvidia/concord/nvpmodel/nvpmodel_p3767_0004.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0004.conf
 
 # Thermal
 ifneq ($(TARGET_TEGRA_THERMAL),)
