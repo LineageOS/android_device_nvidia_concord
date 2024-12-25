@@ -147,9 +147,9 @@ ifeq ($(TARGET_TEGRA_BOOTCTRL),efi)
 AB_OTA_POSTINSTALL_CONFIG += \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true \
-    POSTINSTALL_PATH_system=system/bin/nv_bootloader_payload_updater \
+    POSTINSTALL_PATH_system=system/bin/nv_bootloader_payload_updater-efi \
     RUN_POSTINSTALL_system=true
 PRODUCT_PACKAGES += \
-    nv_bootloader_payload_updater
+    nv_bootloader_payload_updater-efi
 endif
 endif
