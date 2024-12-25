@@ -153,14 +153,6 @@ AB_OTA_PARTITIONS += \
     vendor_boot \
     odm
 ifeq ($(TARGET_TEGRA_BOOTCTRL),efi)
-AB_OTA_POSTINSTALL_CONFIG += \
-    FILESYSTEM_TYPE_system=ext4 \
-    POSTINSTALL_OPTIONAL_system=true \
-    POSTINSTALL_PATH_system=system/bin/nv_bootloader_payload_updater \
-    RUN_POSTINSTALL_system=true
-PRODUCT_PACKAGES += \
-    nv_bootloader_payload_updater \
-    kernel_only_payload \
-    TEGRA_BL.Cap
+# Bootloader update not supported
 endif
 endif
