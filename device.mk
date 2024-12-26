@@ -104,6 +104,16 @@ AB_OTA_PARTITIONS += \
     vendor_boot \
     odm
 ifeq ($(TARGET_BOOT_HAL),efi)
-# Bootloader update not supported
+AB_OTA_POSTINSTALL_CONFIG += \
+    FILESYSTEM_TYPE_system=ext4 \
+    POSTINSTALL_OPTIONAL_system=true \
+    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    RUN_POSTINSTALL_system=true \
+    FILESYSTEM_TYPE_product=ext4 \
+    POSTINSTALL_OPTIONAL_product=true \
+    POSTINSTALL_PATH_product=bin/nv_bootloader_payload_updater-efi \
+    RUN_POSTINSTALL_product=true
+PRODUCT_PACKAGES += \
+    nv_bootloader_payload_updater-efi.product
 endif
 endif

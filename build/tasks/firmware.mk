@@ -40,7 +40,7 @@ DTC_HOST    := $(HOST_OUT_EXECUTABLES)/dtc
 FDTPUT_HOST := $(HOST_OUT_EXECUTABLES)/fdtput
 
 ifneq ($(TARGET_PREBUILT_KERNEL),)
-DTB_PATH := $(dir $(TARGET_PREBUILT_KERNEL))
+DTB_PATH := $(abspath $(dir $(TARGET_PREBUILT_KERNEL)))
 else ifneq ($(TARGET_KERNEL_PLATFORM_TARGET),)
 DTB_PATH := $(abspath $(KERNEL_OUT))
 endif
@@ -137,6 +137,7 @@ $(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(INSTALLED_TOS_TARGET) $(
 	sed -i '/misc.txt/d' $(strip $1)/$(notdir $(strip $(2)))
 	sed -i '/recovery.img/d' $(strip $1)/$(notdir $(strip $(2)))
 	sed -i '/super_meta_only.img/d' $(strip $1)/$(notdir $(strip $(2)))
+	sed -i '/vendor_boot.img/d' $(strip $1)/$(notdir $(strip $(2)))
 	sed -i '/tegra234-p.*dtb/d' $(strip $1)/$(notdir $(strip $(2)))
 	sed -i '/vbmeta_skip.img/d' $(strip $1)/$(notdir $(strip $(2)))
 	cd $(strip $1); PYTHONDONTWRITEBYTECODE=1 PATH=$(abspath $(HOST_OUT_EXECUTABLES)):$(BUILD_TOP)/prebuilts/build-tools/path/linux-x86:$$PATH $(TEGRAFLASH_PATH)/tegraflash.py \
@@ -359,9 +360,9 @@ $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_b
 		 $(P3766-0005_SIGNED_PATH)/qspi_bootblob_ver.txt VER 20 0 p3767-0005+p3768-0000.android"
 	PYTHONPATH=$$PYTHONPATH:$(dir $(CAPSULE_PATH)) python3 $(CAPSULE_PATH)/GenerateCapsule.py -v --encode --monotonic-count 1 --fw-version "0x00000000" --lsv "0x00000000" --guid "bf0d4599-20d4-414e-b2c5-3595b1cda402" --signer-private-cert "$(CAPSULE_PRIVATE)" --other-public-cert "$(CAPSULE_OTHER)" --trusted-public-cert "$(CAPSULE_TRUSTED)" -o "$@" "$(dir $@)/ota.blob"
 
-$(TARGET_OUT_ETC)/firmware/TEGRA_BL.Cap: $(_concord_blob) $(systemimage_intermediates)/file_list.txt
+$(TARGET_OUT_PRODUCT_ETC)/firmware/TEGRA_BL.Cap: $(_concord_blob) $(productimage_intermediates)/file_list.txt
 	$(hide) cp $< $@
-	$(hide) grep system/etc/firmware/TEGRA_BL.Cap $(systemimage_intermediates)/file_list.txt > /dev/null 2>&1 || echo system/etc/firmware/TEGRA_BL.Cap >> $(systemimage_intermediates)/file_list.txt
+	$(hide) grep etc/firmware/TEGRA_BL.Cap $(productimage_intermediates)/file_list.txt > /dev/null 2>&1 || echo etc/firmware/TEGRA_BL.Cap >> $(productimage_intermediates)/file_list.txt
 
 .PHONY: TEGRA_BL.Cap
 TEGRA_BL.Cap: $(_concord_blob)
@@ -382,12 +383,12 @@ $(_kernel_blob): $(INSTALLED_KERNEL_TARGET)
 		 $(DTB_PATH)/tegra234-p3767-0003-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0005+p3768-0000.android"
 	@mv $(dir $@)/ota.blob $@
 
-$(TARGET_OUT_ETC)/firmware/kernel_only_payload: $(_kernel_blob) $(systemimage_intermediates)/file_list.txt
+$(TARGET_OUT_PRODUCT_ETC)/firmware/kernel_only_payload: $(_kernel_blob) $(productimage_intermediates)/file_list.txt
 	$(hide) cp $< $@
-	$(hide) grep system/etc/firmware/kernel_only_payload $(systemimage_intermediates)/file_list.txt > /dev/null 2>&1 || echo system/etc/firmware/kernel_only_payload >> $(systemimage_intermediates)/file_list.txt
+	$(hide) grep etc/firmware/kernel_only_payload $(productimage_intermediates)/file_list.txt > /dev/null 2>&1 || echo etc/firmware/kernel_only_payload >> $(productimage_intermediates)/file_list.txt
 
 .PHONY: kernel_only_payload
 kernel_only_payload: $(_kernel_blob)
 
-$(call intermediates-dir-for,EXECUTABLES,nv_bootloader_payload_updater-efi)/nv_bootloader_payload_updater-efi: $(TARGET_OUT_ETC)/firmware/TEGRA_BL.Cap $(TARGET_OUT_ETC)/firmware/kernel_only_payload
+$(call intermediates-dir-for,EXECUTABLES,nv_bootloader_payload_updater-efi.product)/nv_bootloader_payload_updater-efi: $(TARGET_OUT_PRODUCT_ETC)/firmware/TEGRA_BL.Cap $(TARGET_OUT_PRODUCT_ETC)/firmware/kernel_only_payload
 endif
