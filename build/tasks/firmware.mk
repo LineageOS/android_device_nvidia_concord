@@ -217,7 +217,7 @@ $(call t234_bl_signing_rule, \
   $(strip $(1)), \
   $(strip $(6)), \
   $(strip $(2)), \
-  tegra234-bpmp-3767-$(strip $(3))-3509-a02.dtb, \
+  tegra234-bpmp-3767-$(strip $(3))-3768-super.dtb, \
   $(strip $(7)), \
   gbe-uphy-config-8 hsstp-lane-map-3 hsio-uphy-config-0, \
   tegra234-p3767-overlay.dtbo, \
@@ -248,12 +248,12 @@ $(eval $(call p3710_bl_signing_rule, $(P3710-0000_SIGNED_PATH), 0000, 0000, $(CO
 $(eval $(call p3710_bl_signing_rule, $(P3710-0004_SIGNED_PATH), 0004, 0000, $(CONCORD_FLASH)/flash_android_t234_sdmmc.xml, tegra234-p3701-0004-p3737-0000.dtb))
 $(eval $(call p3710_bl_signing_rule, $(P3710-0005_SIGNED_PATH), 0005, 0005, $(CONCORD_FLASH)/flash_android_t234_sdmmc.xml, tegra234-p3701-0000-p3737-0000.dtb))
 
-$(eval $(call p3766_bl_signing_rule, $(P3766-0000_SIGNED_PATH), TE990M-A1, 0000-a02, 0000, 0000, $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml, tegra234-p3767-0000-p3768-0000-a0-android.dtb))
-$(eval $(call p3766_bl_signing_rule, $(P3766-0001_SIGNED_PATH), TE990M-A1, 0001,     0001, 0001, $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml, tegra234-p3767-0001-p3768-0000-a0-android.dtb))
-$(eval $(call p3766_bl_signing_rule, $(P3766-0002_SIGNED_PATH), TE990M-A1, 0000-a02, 0000, 0002, $(CONCORD_FLASH)/flash_android_t234_qspi_sd.xml,   tegra234-p3767-0000-p3768-0000-a0-android.dtb))
-$(eval $(call p3766_bl_signing_rule, $(P3766-0003_SIGNED_PATH), TE950M-A1, 0003,     0001, 0003, $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml, tegra234-p3767-0003-p3768-0000-a0-android.dtb))
-$(eval $(call p3766_bl_signing_rule, $(P3766-0004_SIGNED_PATH), TE950M-A1, 0004,     0004, 0004, $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml, tegra234-p3767-0004-p3768-0000-a0-android.dtb))
-$(eval $(call p3766_bl_signing_rule, $(P3766-0005_SIGNED_PATH), TE950M-A1, 0003,     0001, 0005, $(CONCORD_FLASH)/flash_android_t234_qspi_sd.xml,   tegra234-p3767-0003-p3768-0000-a0-android.dtb))
+$(eval $(call p3766_bl_signing_rule, $(P3766-0000_SIGNED_PATH), TE990M-A1, 0000, 0000, 0000, $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml, tegra234-p3767-0000-p3768-0000-a0-android.dtb))
+$(eval $(call p3766_bl_signing_rule, $(P3766-0001_SIGNED_PATH), TE990M-A1, 0001, 0001, 0001, $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml, tegra234-p3767-0001-p3768-0000-a0-android.dtb))
+$(eval $(call p3766_bl_signing_rule, $(P3766-0002_SIGNED_PATH), TE990M-A1, 0000, 0000, 0002, $(CONCORD_FLASH)/flash_android_t234_qspi_sd.xml,   tegra234-p3767-0000-p3768-0000-a0-android.dtb))
+$(eval $(call p3766_bl_signing_rule, $(P3766-0003_SIGNED_PATH), TE950M-A1, 0003, 0001, 0003, $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml, tegra234-p3767-0003-p3768-0000-a0-android.dtb))
+$(eval $(call p3766_bl_signing_rule, $(P3766-0004_SIGNED_PATH), TE950M-A1, 0004, 0004, 0004, $(CONCORD_FLASH)/flash_android_t234_qspi_nvme.xml, tegra234-p3767-0004-p3768-0000-a0-android.dtb))
+$(eval $(call p3766_bl_signing_rule, $(P3766-0005_SIGNED_PATH), TE950M-A1, 0003, 0001, 0005, $(CONCORD_FLASH)/flash_android_t234_qspi_sd.xml,   tegra234-p3767-0003-p3768-0000-a0-android.dtb))
 
 ifneq ($(TEGRA_DERIVATIVE_FIRMWARE),)
 include $(TEGRA_DERIVATIVE_FIRMWARE)

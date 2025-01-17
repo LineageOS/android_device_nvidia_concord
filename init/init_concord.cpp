@@ -66,13 +66,13 @@ void vendor_set_nvpmodel(tegra_init *ti)
 	} else if (ti->is_model(3701, 4)) {
 		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3701_0004.conf");
 	} else if (ti->is_model(3767, 0) || ti->is_model(3767, 2)) {
-		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3767_0000.conf");
+		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3767_0000_super.conf");
 	} else if (ti->is_model(3767, 1)) {
-		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3767_0001.conf");
+		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3767_0001_super.conf");
 	} else if (ti->is_model(3767, 3) || ti->is_model(3767, 5)) {
-		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3767_0003.conf");
+		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3767_0003_super.conf");
 	} else if (ti->is_model(3767, 4)) {
-		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3767_0004.conf");
+		ti->property_set("ro.vendor.lineage.tegra.nvpmodel.config", "/odm/etc/nvpmodel_p3767_0004_super.conf");
 	}
 }
 

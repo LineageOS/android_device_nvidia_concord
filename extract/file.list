@@ -479,7 +479,7 @@ l4t-t234	bootloader/tegra234-mb1-bct-p3767-0004-rc12-665mhz.dtsi			BCT/
 l4t-t234	bootloader/tegra234-mb1-bct-p3767-0004-rc13-665mhz.dtsi			BCT/
 l4t-t234	bootloader/tegra234-mb1-bct-p3767-0004-rc14-665mhz.dtsi			BCT/
 l4t-t234	bootloader/tegra234-mb1-bct-p3767-0004-rc15-665mhz.dtsi			BCT/
-l4t-t234	bootloader/generic/tegra234-bpmp-3767-0000-a02-3509-a02.dtb		BCT/
-l4t-t234	bootloader/generic/tegra234-bpmp-3767-0001-3509-a02.dtb			BCT/
-l4t-t234	bootloader/generic/tegra234-bpmp-3767-0003-3509-a02.dtb			BCT/
-l4t-t234	bootloader/generic/tegra234-bpmp-3767-0004-3509-a02.dtb			BCT/
+l4t-t234	bootloader/generic/tegra234-bpmp-3767-0000-3768-super.dtb		BCT/
+l4t-t234	bootloader/generic/tegra234-bpmp-3767-0001-3768-super.dtb		BCT/
+l4t-t234	bootloader/generic/tegra234-bpmp-3767-0003-3768-super.dtb		BCT/
+l4t-t234	bootloader/generic/tegra234-bpmp-3767-0004-3768-super.dtb		BCT/

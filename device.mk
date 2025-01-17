@@ -121,10 +121,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/nvidia/concord/nvpmodel/nvpmodel_p3701_0000.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3701_0000.conf \
     device/nvidia/concord/nvpmodel/nvpmodel_p3701_0004.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3701_0004.conf \
-    device/nvidia/concord/nvpmodel/nvpmodel_p3767_0000.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0000.conf \
-    device/nvidia/concord/nvpmodel/nvpmodel_p3767_0001.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0001.conf \
-    device/nvidia/concord/nvpmodel/nvpmodel_p3767_0003.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0003.conf \
-    device/nvidia/concord/nvpmodel/nvpmodel_p3767_0004.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0004.conf
+    device/nvidia/concord/nvpmodel/nvpmodel_p3767_0000_super.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0000_super.conf \
+    device/nvidia/concord/nvpmodel/nvpmodel_p3767_0001_super.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0001_super.conf \
+    device/nvidia/concord/nvpmodel/nvpmodel_p3767_0003_super.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0003_super.conf \
+    device/nvidia/concord/nvpmodel/nvpmodel_p3767_0004_super.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0004_super.conf
 
 # Thermal
 ifneq ($(TARGET_TEGRA_THERMAL),)
