@@ -133,8 +133,11 @@ endif
 
 # Thermal
 ifneq ($(TARGET_TEGRA_THERMAL),)
+ifeq ($(filter 5.10, $(TARGET_KERNEL_VERSION)),)
+TARGET_TEGRA_THERMAL_SUFFIX ?= .ack
+endif
 PRODUCT_COPY_FILES += \
-    $(foreach variant,$(TARGET_TEGRA_VARIANTS),device/nvidia/concord/thermal/thermalhal.$(variant).xml:$(TARGET_COPY_OUT_VENDOR)/etc/thermalhal.$(variant).xml)
+    $(foreach variant,$(TARGET_TEGRA_VARIANTS),device/nvidia/concord/thermal/thermalhal.$(variant)$(TARGET_TEGRA_THERMAL_SUFFIX).xml:$(TARGET_COPY_OUT_VENDOR)/etc/thermalhal.$(variant).xml)
 endif
 
 # Trusted firmware
