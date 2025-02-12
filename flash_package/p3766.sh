@@ -84,7 +84,7 @@ fi;
 
 cp tegra234-p3767-${ARVALASKU}-p3768-0000-a0-android.dtb tegra234-p3767-p3768.dtb;
 cp bpmp_t234-${BPMPVAR}-A1_prod.bin bpmp_t234-prod.bin;
-cp tegra234-bpmp-3767-${ARVALASKU}-3509-a02.dtb tegra234-bpmp.dtb;
+cp tegra234-bpmp-3767-${ARVALASKU}-3768-super.dtb tegra234-bpmp.dtb;
 
 # Generate version partition
 if ! generate_version_bootblob_v4 qspi_bootblob_ver.txt REPLACEME; then
