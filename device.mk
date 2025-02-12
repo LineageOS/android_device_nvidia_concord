@@ -34,6 +34,8 @@ TARGET_THERMAL_HAL    ?= tegra
 
 TARGET_HAS_BATTERY    ?= false
 
+TARGET_TEGRA_EDK2     := lineage
+
 include device/nvidia/t234-common/t234.mk
 
 # System properties
