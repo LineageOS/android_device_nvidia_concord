@@ -20,7 +20,7 @@ Attributes for cpu-usages
 	<thermal_devices>
 		<thermal_device>
 			<thermal-prop name="CPU" type="DEVICE_TEMPERATURE_CPU" sensor-label="CPU-therm" multiplier='0.001' />
-			<thermal-prop cores='12' />
+			<thermal-prop cores='6' />
 		</thermal_device>
 		<thermal_device>
 			<thermal-prop name="GPU" type="DEVICE_TEMPERATURE_GPU" sensor-label="GPU-therm" multiplier='0.001' />
@@ -31,5 +31,5 @@ Attributes for cpu-usages
 			<cooling-prop name="FAN" type="FAN_RPM" cooling-path="/sys/devices/platform/39c0000.tachometer/hwmon/hwmon0/rpm" />
 		</cooling_device>
 	</cooling_devices>
-	<cpu_usages cpus="12" />
+	<cpu_usages cpus="6" />
 </thermalhal>
