@@ -182,7 +182,7 @@ $(call t234_bl_signing_rule, \
   tegra234-bpmp-3701-$(strip $(2))-3737-0000.dtb, \
   $(strip $(5)), \
   gbe-uphy-config-22 hsstp-lane-map-3 nvhs-uphy-config-0 hsio-uphy-config-0 gbe0-enable-10g, \
-  tegra234-p3737-overlay.dtbo tegra234-p3701-overlay.dtbo, \
+  tegra234-p3737-overlay.dtbo tegra234-p3701-overlay.dtbo tegra234-carveouts.dtbo, \
   tegra234-mb1-bct-device-p3701-0000.dts, \
   tegra234-mb1-bct-misc-p3701-0000.dts, \
   tegra234-mb1-bct-pinmux-p3701-0000-a04.dtsi, \
@@ -221,7 +221,7 @@ $(call t234_bl_signing_rule, \
   tegra234-bpmp-3767-$(strip $(3))-3768-super.dtb, \
   $(strip $(7)), \
   gbe-uphy-config-8 hsstp-lane-map-3 hsio-uphy-config-0, \
-  tegra234-p3767-overlay.dtbo, \
+  tegra234-p3767-overlay.dtbo tegra234-carveouts.dtbo, \
   tegra234-mb1-bct-device-p3767-0000.dts, \
   tegra234-mb1-bct-misc-p3767-0000.dts, \
   tegra234-mb1-bct-pinmux-p3767-dp-a03.dtsi, \

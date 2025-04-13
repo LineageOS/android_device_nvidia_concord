@@ -71,6 +71,7 @@ $(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_
 	@cp $(DTB_PATH)/tegra234-p3737-audio-codec-rt5658-40pin.dtbo $(dir $@)/
 	@cp $(DTB_PATH)/tegra234-p3737-overlay.dtbo $(dir $@)/
 	@cp $(DTB_PATH)/tegra234-p3701-overlay.dtbo $(dir $@)/
+	@cp $(DTB_PATH)/tegra234-carveouts.dtbo $(dir $@)/
 	@cp $(CONCORD_BCT)/* $(dir $@)/
 	@cp $(CONCORD_FLASH)/tegra234-mb2-bct-scr-p3701-0000-lineage.dts $(dir $@)/
 	@rm -f $(dir $@)/*p3767*
@@ -119,6 +120,7 @@ $(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_
 	@cp $(DTB_PATH)/tegra234-p3767-0003-p3768-0000-a0-android.dtb $(dir $@)/
 	@cp $(DTB_PATH)/tegra234-p3767-0004-p3768-0000-a0-android.dtb $(dir $@)/
 	@cp $(DTB_PATH)/tegra234-p3767-overlay.dtbo $(dir $@)/
+	@cp $(DTB_PATH)/tegra234-carveouts.dtbo $(dir $@)/
 	@cp $(CONCORD_BCT)/* $(dir $@)/
 	@rm -f $(dir $@)/*p3701*
 	@cp $(CONCORD_BCT)/tegra234-mb2-bct-scr-p3701-0000-override.dts $(dir $@)/

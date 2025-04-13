@@ -87,7 +87,7 @@ fi;
 declare -a FLASH_CMD_FLASH=(
   --bl uefi_jetson_with_dtb.bin
   --odmdata gbe-uphy-config-22,hsstp-lane-map-3,nvhs-uphy-config-0,hsio-uphy-config-0,gbe0-enable-10g
-  --overlay_dtb AndroidConfig.dtbo,tegra234-p3737-audio-codec-rt5658-40pin.dtbo,tegra234-p3737-overlay.dtbo,tegra234-p3701-overlay.dtbo
+  --overlay_dtb AndroidConfig.dtbo,tegra234-carveouts.dtbo,tegra234-p3737-audio-codec-rt5658-40pin.dtbo,tegra234-p3737-overlay.dtbo,tegra234-p3701-overlay.dtbo
   --bldtb tegra234-p3701-p3737.dtb
   --applet mb1_t234_prod.bin
   --chip "0x23"
