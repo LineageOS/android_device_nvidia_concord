@@ -90,7 +90,7 @@ void vendor_load_properties()
 		{ "arvala",  "fett",  "arvala",  "Jetson Orin Nano", 3767,   4, 28, 320 }, /* 4GB */
 		{ "arvala",  "kryze", "arvala",  "Jetson Orin Nano", 3767,   5, 28, 320 }, /* 8GB + SD */
 	};
-	tegra_init::build_version tav = { "11", "RQ1A.210105.003", "13961456_3871.0251" };
+	tegra_init::build_version tav = { "11", "RQ1A.210105.003", "7825230_4040.2147" };
 
 	tegra_init ti(devices);
 	ti.set_properties();
