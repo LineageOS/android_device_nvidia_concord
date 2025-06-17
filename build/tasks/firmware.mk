@@ -261,7 +261,7 @@ endif
 
 $(_concord_blob): $(_p3710-0000_br_bct) $(_p3710-0004_br_bct) $(_p3710-0005_br_bct) $(_p3766-0000_br_bct) $(_p3766-0001_br_bct) $(_p3766-0002_br_bct) $(_p3766-0003_br_bct) $(_p3766-0004_br_bct) $(_p3766-0005_br_bct)
 	@mkdir -p $(dir $@)
-	OUT=$(dir $@) TOP=$(BUILD_TOP) python2 $(TEGRAFLASH_PATH)/BUP_generator.py -t update -e \
+	OUT=$(dir $@) TOP=$(BUILD_TOP) python3 $(TEGRAFLASH_PATH)/BUP_generator.py -t update -e \
 		"$(P3710-0000_SIGNED_PATH)/psc_bl1_t234_prod_aligned_sigheader.bin.encrypt psc_bl1 3531 2 common; \
 		 $(P3710-0000_SIGNED_PATH)/nvdec_t234_prod_sigheader.fw.encrypt nvdec 3531 2 common; \
 		 $(P3710-0000_SIGNED_PATH)/pscfw_t234_prod_sigheader.bin.encrypt psc-fw 3531 2 common; \
@@ -369,7 +369,7 @@ _kernel_blob := $(call intermediates-dir-for,ETC,kernel_only_payload)/kernel_onl
 
 $(_kernel_blob): $(INSTALLED_KERNEL_TARGET)
 	@mkdir -p $(dir $@)
-	OUT=$(dir $@) TOP=$(BUILD_TOP) python2 $(TEGRAFLASH_PATH)/BUP_generator.py -t update -e \
+	OUT=$(dir $@) TOP=$(BUILD_TOP) python3 $(TEGRAFLASH_PATH)/BUP_generator.py -t update -e \
 		"$(DTB_PATH)/tegra234-p3701-0000-p3737-0000.dtb kernel-dtb 20 0 p3710-0000+p3737-0000.android; \
 		 $(DTB_PATH)/tegra234-p3701-0004-p3737-0000.dtb kernel-dtb 20 0 p3710-0004+p3737-0000.android; \
 		 $(DTB_PATH)/tegra234-p3701-0000-p3737-0000.dtb kernel-dtb 20 0 p3710-0005+p3737-0000.android; \
