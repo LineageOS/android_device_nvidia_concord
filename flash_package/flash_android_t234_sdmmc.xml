@@ -644,6 +644,7 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
+            <filename> vendor_boot.img </filename>
             <description> **Required.** Slot A; contains the android vendor boot ramdisk. </description>
         </partition>
         <partition name="vbmeta_a" type="data">
@@ -730,6 +731,7 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
+            <filename> vendor_boot.img </filename>
             <description> **Required.** Slot B; contains the android vendor boot ramdisk. </description>
         </partition>
         <partition name="vbmeta_b" type="data">
