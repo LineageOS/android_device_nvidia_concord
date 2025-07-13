@@ -32,6 +32,7 @@ TARGET_TEGRA_HEALTH   ?= nobattery
 TARGET_TEGRA_KERNEL   ?= 5.10
 TARGET_TEGRA_KEYSTORE ?= software
 TARGET_TEGRA_LIGHT    ?= lineage
+TARGET_TEGRA_PMODEL   ?= r36
 TARGET_TEGRA_THERMAL  ?= lineage
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= rtl8822ce
@@ -120,8 +121,7 @@ PRODUCT_COPY_FILES += \
 endif
 
 # PModel
-PRODUCT_PACKAGES += \
-    nvpmodel
+ifneq ($(TARGET_TEGRA_PMODEL),)
 PRODUCT_COPY_FILES += \
     device/nvidia/concord/nvpmodel/nvpmodel_p3701_0000.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3701_0000.conf \
     device/nvidia/concord/nvpmodel/nvpmodel_p3701_0004.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3701_0004.conf \
@@ -129,6 +129,7 @@ PRODUCT_COPY_FILES += \
     device/nvidia/concord/nvpmodel/nvpmodel_p3767_0001_super.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0001_super.conf \
     device/nvidia/concord/nvpmodel/nvpmodel_p3767_0003_super.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0003_super.conf \
     device/nvidia/concord/nvpmodel/nvpmodel_p3767_0004_super.conf:$(TARGET_COPY_OUT_ODM)/etc/nvpmodel_p3767_0004_super.conf
+endif
 
 # Thermal
 ifneq ($(TARGET_TEGRA_THERMAL),)
