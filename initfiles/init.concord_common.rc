@@ -36,8 +36,6 @@ on boot
     setprop sys.usb.configfs 1
 
 on init
-    enable vendor.bluetooth-default
-
     mount efivarfs none /sys/firmware/efi/efivars context=u:object_r:sysfs_efivar:s0
 
 # ZRAM setup
