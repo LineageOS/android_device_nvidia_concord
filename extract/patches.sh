@@ -29,6 +29,12 @@ function patch_preprod() {
   sed -i 's/preprod_dev_sign = <1>/preprod_dev_sign = <0>/' ${LINEAGE_ROOT}/${OUTDIR}/concord/r36/BCT/tegra234-br-bct-p3767-0000-l4t.dts
   sed -i 's/preprod_dev_sign = <1>/preprod_dev_sign = <0>/' ${LINEAGE_ROOT}/${OUTDIR}/concord/r36/BCT/tegra234-br-bct_b-p3767-0000-l4t.dts
 
+  sed -i 's/preprod_dev_sign = <1>/preprod_dev_sign = <0>/' ${LINEAGE_ROOT}/${OUTDIR}/concord/r39/BCT/tegra234-br-bct-diag-boot.dts
+  sed -i 's/preprod_dev_sign = <1>/preprod_dev_sign = <0>/' ${LINEAGE_ROOT}/${OUTDIR}/concord/r39/BCT/tegra234-br-bct-p3701-0000.dts
+  sed -i 's/preprod_dev_sign = <1>/preprod_dev_sign = <0>/' ${LINEAGE_ROOT}/${OUTDIR}/concord/r39/BCT/tegra234-br-bct_b-p3701-0000.dts
+  sed -i 's/preprod_dev_sign = <1>/preprod_dev_sign = <0>/' ${LINEAGE_ROOT}/${OUTDIR}/concord/r39/BCT/tegra234-br-bct-p3767-0000-l4t.dts
+  sed -i 's/preprod_dev_sign = <1>/preprod_dev_sign = <0>/' ${LINEAGE_ROOT}/${OUTDIR}/concord/r39/BCT/tegra234-br-bct_b-p3767-0000-l4t.dts
+
   echo "";
 }
 
