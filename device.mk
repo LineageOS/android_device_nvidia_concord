@@ -30,10 +30,10 @@ TARGET_TEGRA_BOOTCTRL ?= efi
 TARGET_TEGRA_BT       ?= btlinux
 TARGET_TEGRA_CAMERA   ?= rel-shield-r
 TARGET_TEGRA_HEALTH   ?= nobattery
-TARGET_TEGRA_KEYSTORE ?= software
 TARGET_TEGRA_LIGHT    ?= lineage
 TARGET_TEGRA_PMODEL   ?= r36
 TARGET_TEGRA_THERMAL  ?= lineage
+TARGET_TEGRA_TOS      ?= optee
 TARGET_TEGRA_WIDEVINE ?= rel-shield-r
 TARGET_TEGRA_WIFI     ?= rtl8822ce
 
