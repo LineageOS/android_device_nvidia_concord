@@ -131,7 +131,7 @@
 
   <card name="NVIDIA Jetson AGX Orin HDA">
     <pcm_config name ="hdmi-playback"
-                device_id="8"
+                device_id="3"
                 rate="48000"
                 channels="2"
                 bps="16"
@@ -150,7 +150,7 @@
 
   <card name="NVIDIA Jetson Orin NX HDA">
     <pcm_config name ="hdmi-playback"
-                device_id="8"
+                device_id="3"
                 rate="48000"
                 channels="2"
                 bps="16"
