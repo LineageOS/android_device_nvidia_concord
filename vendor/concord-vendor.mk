@@ -16,3 +16,4 @@ include device/nvidia/t234-common/vendor/t234-by-flags.mk
 include device/nvidia/tegra-common/vendor/common-by-flags.mk
 include device/nvidia/shield-common/vendor/shield-by-flags.mk
 include device/nvidia/tegra-common/vendor/$(TARGET_TEGRA_FIRMWARE_BRANCH)/realtek/rtl8822ce.mk
+include device/nvidia/tegra-common/vendor/$(TARGET_TEGRA_FIRMWARE_BRANCH)/realtek/rtl8168.mk
