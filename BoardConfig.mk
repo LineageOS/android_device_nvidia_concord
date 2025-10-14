@@ -87,4 +87,7 @@ TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
 # Security Patch Level
 VENDOR_SECURITY_PATCH := 2024-12-05
 
+# SELinux
+BOARD_VENDOR_SEPOLICY_DIRS += device/nvidia/concord/sepolicy/vendor
+
 include device/nvidia/t234-common/BoardConfigCommon.mk
