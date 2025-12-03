@@ -26,7 +26,7 @@ CAPSULE_OTHER   ?= $(CAPSULE_CERTS)/TestSub.pub.pem
 CAPSULE_TRUSTED ?= $(CAPSULE_CERTS)/TestRoot.pub.pem
 
 INSTALLED_KERNEL_TARGET    := $(PRODUCT_OUT)/kernel
-INSTALLED_TOS_TARGET       := $(PRODUCT_OUT)/tos-$(if $(filter-out software,$(TARGET_TEGRA_TOS)),$(TARGET_TEGRA_TOS),mon-only).img
+INSTALLED_TOS_TARGET       := $(PRODUCT_OUT)/tos-$(if $(filter-out default,$(TARGET_SECURITY_KEYMINT_HAL)),$(TARGET_SECURITY_KEYMINT_HAL),mon-only).img
 INSTALLED_TIANOCORE_TARGET := $(PRODUCT_OUT)/tianocore.bin
 INSTALLED_EDK2_DTBO_TARGET := $(PRODUCT_OUT)/AndroidConfiguration.dtbo
 
@@ -43,10 +43,6 @@ ifneq ($(TARGET_PREBUILT_KERNEL),)
 DTB_PATH := $(dir $(TARGET_PREBUILT_KERNEL))
 else ifneq ($(TARGET_KERNEL_PLATFORM_TARGET),)
 DTB_PATH := $(abspath $(KERNEL_OUT))
-else ifneq ($(findstring dtstree,$(TARGET_KERNEL_ADDITIONAL_FLAGS)),)
-DTB_PATH := $(abspath $(KERNEL_OUT)/../lineage-oot/device-tree/platform/generic-dts/t23x/lineage)
-else
-DTB_PATH := $(abspath $(KERNEL_OUT)/arch/arm64/boot/dts/nvidia)
 endif
 
 COMMA := ,
