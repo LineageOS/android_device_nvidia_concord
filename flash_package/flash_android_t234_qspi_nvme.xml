@@ -787,6 +787,16 @@
             <align_boundary> 4096 </align_boundary>
             <description> **Required.** Contains metadata for userdata encryption. </description>
         </partition>
+        <partition name="staging" type="data">
+            <allocation_policy> sequential </allocation_policy>
+            <filesystem_type> basic </filesystem_type>
+            <size> 134217728 </size>
+            <file_system_attribute> 0 </file_system_attribute>
+            <allocation_attribute> 0x8 </allocation_attribute>
+            <percent_reserved> 0 </percent_reserved>
+            <align_boundary> 4096 </align_boundary>
+            <description> **Required.** Contains metadata for userdata encryption. </description>
+        </partition>
         <partition name="super" type="data">
             <allocation_policy> sequential </allocation_policy>
             <filesystem_type> basic </filesystem_type>
