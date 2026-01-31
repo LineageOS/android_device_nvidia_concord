@@ -589,26 +589,6 @@
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
         </partition>
-        <partition name="recovery_a" type="data">
-            <allocation_policy> sequential </allocation_policy>
-            <filesystem_type> basic </filesystem_type>
-            <size> 83886080 </size>
-            <file_system_attribute> 0 </file_system_attribute>
-            <allocation_attribute> 8 </allocation_attribute>
-            <percent_reserved> 0 </percent_reserved>
-            <filename> recovery.img </filename>
-            <description> **Required.** Slot A; contains the recovery image </description>
-        </partition>
-        <partition name="recovery-dtb_a" type="data">
-            <allocation_policy> sequential </allocation_policy>
-            <filesystem_type> basic </filesystem_type>
-            <size> 786432 </size>
-            <file_system_attribute> 0 </file_system_attribute>
-            <allocation_attribute> 8 </allocation_attribute>
-            <percent_reserved> 0 </percent_reserved>
-            <filename> tegra234-p3701-p3737.dtb </filename>
-            <description> **Required.** Slot A; contains recovery device tree blob. </description>
-        </partition>
         <partition name="boot_a" type="data">
             <allocation_policy> sequential </allocation_policy>
             <filesystem_type> basic </filesystem_type>
@@ -616,7 +596,7 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> recovery.img </filename>
+            <filename> boot.img </filename>
             <description> **Required.** Slot A; contains the Linux kernel. </description>
         </partition>
         <partition name="kernel-dtb_a" type="data">
@@ -676,26 +656,6 @@
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
         </partition>
-        <partition name="recovery_b" type="data">
-            <allocation_policy> sequential </allocation_policy>
-            <filesystem_type> basic </filesystem_type>
-            <size> 83886080 </size>
-            <file_system_attribute> 0 </file_system_attribute>
-            <allocation_attribute> 8 </allocation_attribute>
-            <percent_reserved> 0 </percent_reserved>
-            <filename> recovery.img </filename>
-            <description> **Required.** Slot B; contains the recovery image </description>
-        </partition>
-        <partition name="recovery-dtb_b" type="data">
-            <allocation_policy> sequential </allocation_policy>
-            <filesystem_type> basic </filesystem_type>
-            <size> 786432 </size>
-            <file_system_attribute> 0 </file_system_attribute>
-            <allocation_attribute> 8 </allocation_attribute>
-            <percent_reserved> 0 </percent_reserved>
-            <filename> tegra234-p3701-p3737.dtb </filename>
-            <description> **Required.** Slot B; contains recovery device tree blob. </description>
-        </partition>
         <partition name="boot_b" type="data">
             <allocation_policy> sequential </allocation_policy>
             <filesystem_type> basic </filesystem_type>
@@ -703,7 +663,7 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-            <filename> recovery.img </filename>
+            <filename> boot.img </filename>
             <description> **Required.** Slot B; contains the Linux kernel. </description>
         </partition>
         <partition name="kernel-dtb_b" type="data">

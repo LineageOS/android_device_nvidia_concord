@@ -609,6 +609,7 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
+            <filename> boot.img </filename>
         </partition>
         <partition name="kernel-dtb_a" type="kernel_dtb">
             <allocation_policy> sequential </allocation_policy>
@@ -626,24 +627,6 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-        </partition>
-        <partition name="recovery_a" type="kernel">
-            <allocation_policy> sequential </allocation_policy>
-            <filesystem_type> basic </filesystem_type>
-            <size> 83886080 </size>
-            <file_system_attribute> 0 </file_system_attribute>
-            <allocation_attribute> 8 </allocation_attribute>
-            <percent_reserved> 0 </percent_reserved>
-            <filename> recovery.img </filename>
-        </partition>
-        <partition name="recovery-dtb_a" type="kernel_dtb">
-            <allocation_policy> sequential </allocation_policy>
-            <filesystem_type> basic </filesystem_type>
-            <size> 524288 </size>
-            <file_system_attribute> 0 </file_system_attribute>
-            <allocation_attribute> 8 </allocation_attribute>
-            <percent_reserved> 0 </percent_reserved>
-            <filename> tegra234-p3767-p3768.dtb </filename>
         </partition>
         <partition name="vendor_boot_a" type="data">
             <allocation_policy> sequential </allocation_policy>
@@ -691,6 +674,7 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
+            <filename> boot.img </filename>
         </partition>
         <partition name="kernel-dtb_b" type="kernel_dtb">
             <allocation_policy> sequential </allocation_policy>
@@ -708,24 +692,6 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
-        </partition>
-        <partition name="recovery_b" type="kernel">
-            <allocation_policy> sequential </allocation_policy>
-            <filesystem_type> basic </filesystem_type>
-            <size> 83886080 </size>
-            <file_system_attribute> 0 </file_system_attribute>
-            <allocation_attribute> 8 </allocation_attribute>
-            <percent_reserved> 0 </percent_reserved>
-            <filename> recovery.img </filename>
-        </partition>
-        <partition name="recovery-dtb_b" type="kernel_dtb">
-            <allocation_policy> sequential </allocation_policy>
-            <filesystem_type> basic </filesystem_type>
-            <size> 524288 </size>
-            <file_system_attribute> 0 </file_system_attribute>
-            <allocation_attribute> 8 </allocation_attribute>
-            <percent_reserved> 0 </percent_reserved>
-            <filename> tegra234-p3767-p3768.dtb </filename>
         </partition>
         <partition name="vendor_boot_b" type="data">
             <allocation_policy> sequential </allocation_policy>
