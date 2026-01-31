@@ -1,5 +1,6 @@
 # Partitions
 /dev/block/platform/bus@0/3400000\.mmc/by-name/boot(_[ab])? 		u:object_r:boot_block_device:s0
+/dev/block/platform/bus@0/3400000\.mmc/by-name/init_boot(_[ab])? 	u:object_r:boot_block_device:s0
 /dev/block/platform/bus@0/3400000\.mmc/by-name/kernel-dtb(_[ab])? 	u:object_r:bootloader_block_device:s0
 /dev/block/platform/bus@0/3400000\.mmc/by-name/kernel-dtbo(_[ab])? 	u:object_r:dtbo_block_device:s0
 /dev/block/platform/bus@0/3400000\.mmc/by-name/metadata			u:object_r:metadata_block_device:s0
