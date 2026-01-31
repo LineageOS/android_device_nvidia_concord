@@ -108,6 +108,7 @@ ATF_PARAMS ?= BRANCH_PROTECTION=3 ARM_ARCH_MINOR=3
 ifneq ($(TARGET_BOOT_HAL),)
 AB_OTA_PARTITIONS += \
     boot \
+    init_boot \
     product \
     system \
     system_ext \

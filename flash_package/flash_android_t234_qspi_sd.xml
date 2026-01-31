@@ -658,6 +658,16 @@
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
         </partition>
+        <partition name="init_boot_a" type="data">
+            <allocation_policy> sequential </allocation_policy>
+            <filesystem_type> basic </filesystem_type>
+            <size> 83886080 </size>
+            <file_system_attribute> 0 </file_system_attribute>
+            <allocation_attribute> 8 </allocation_attribute>
+            <percent_reserved> 0 </percent_reserved>
+            <filename> init_boot.img </filename>
+            <description> **Required.** Slot A; contains the android init boot ramdisk. </description>
+        </partition>
         <partition name="vendor_boot_a" type="data">
             <allocation_policy> sequential </allocation_policy>
             <filesystem_type> basic </filesystem_type>
@@ -722,6 +732,16 @@
             <file_system_attribute> 0 </file_system_attribute>
             <allocation_attribute> 8 </allocation_attribute>
             <percent_reserved> 0 </percent_reserved>
+        </partition>
+        <partition name="init_boot_b" type="data">
+            <allocation_policy> sequential </allocation_policy>
+            <filesystem_type> basic </filesystem_type>
+            <size> 83886080 </size>
+            <file_system_attribute> 0 </file_system_attribute>
+            <allocation_attribute> 8 </allocation_attribute>
+            <percent_reserved> 0 </percent_reserved>
+            <filename> init_boot.img </filename>
+            <description> **Required.** Slot B; contains the android init boot ramdisk. </description>
         </partition>
         <partition name="vendor_boot_b" type="data">
             <allocation_policy> sequential </allocation_policy>
