@@ -106,6 +106,7 @@ ATF_PARAMS ?= BRANCH_PROTECTION=3 ARM_ARCH_MINOR=3
 
 # Updater
 ifneq ($(TARGET_BOOT_HAL),)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
 AB_OTA_PARTITIONS += \
     boot \
     init_boot \
