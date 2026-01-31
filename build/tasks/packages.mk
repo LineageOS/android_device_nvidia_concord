@@ -20,8 +20,8 @@ CONCORD_FLASH   := $(BUILD_TOP)/device/nvidia/concord/flash_package
 COMMON_FLASH    := $(BUILD_TOP)/device/nvidia/tegra-common/flash_package
 
 INSTALLED_KERNEL_TARGET        := $(PRODUCT_OUT)/kernel
-INSTALLED_RECOVERYIMAGE_TARGET := $(PRODUCT_OUT)/recovery.img
 INSTALLED_SUPER_EMPTY_TARGET   := $(PRODUCT_OUT)/super_empty.img
+INSTALLED_BOOT_TARGET          := $(PRODUCT_OUT)/boot.img
 INSTALLED_VENDORBOOT_TARGET    := $(PRODUCT_OUT)/vendor_boot.img
 INSTALLED_TOS_TARGET           := $(PRODUCT_OUT)/tos-$(if $(filter-out default,$(TARGET_SECURITY_KEYMINT_HAL)),$(TARGET_SECURITY_KEYMINT_HAL),mon-only).img
 INSTALLED_TIANOCORE_TARGET     := $(PRODUCT_OUT)/tianocore.bin
@@ -39,7 +39,7 @@ endif
 
 _p3710_package_archive := $(call intermediates-dir-for,ETC,p3710_flash_package)/p3710_flash_package.txz
 
-$(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_TARGET) $(INSTALLED_VENDORBOOT_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET) $(INSTALLED_TOS_TARGET)
+$(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $(INSTALLED_VENDORBOOT_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET) $(INSTALLED_TOS_TARGET)
 	@mkdir -p $(dir $@)/tegraflash
 	@mkdir -p $(dir $@)/scripts
 	@cp $(TEGRAFLASH_PATH)/tegraflash* $(dir $@)/tegraflash/
@@ -62,7 +62,7 @@ $(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_
 	@cp $(INSTALLED_TIANOCORE_TARGET) $(dir $@)/uefi_jetson.bin
 	@rm $(dir $@)/bpmp_t234-TE950M-A1_prod.bin
 	@$(AVBTOOL_HOST) make_vbmeta_image --flags 2 --padding_size 256 --output $(dir $@)/vbmeta_skip.img
-	@cp $(INSTALLED_RECOVERYIMAGE_TARGET) $(dir $@)/
+	@cp $(INSTALLED_BOOT_TARGET) $(dir $@)/
 	@cp $(INSTALLED_VENDORBOOT_TARGET) $(dir $@)/
 	@touch $(dir $@)/super_meta_only.img
 	@$(LPFLASH_HOST) $(dir $@)/super_meta_only.img $(INSTALLED_SUPER_EMPTY_TARGET)
@@ -87,7 +87,7 @@ p3710_flash_package: $(PRODUCT_OUT)/p3710_flash_package.txz
 
 _p3766_package_archive := $(call intermediates-dir-for,ETC,p3766_flash_package)/p3766_flash_package.txz
 
-$(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_TARGET) $(INSTALLED_VENDORBOOT_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET) $(INSTALLED_TOS_TARGET)
+$(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $(INSTALLED_VENDORBOOT_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET) $(INSTALLED_TOS_TARGET)
 	@mkdir -p $(dir $@)/tegraflash
 	@mkdir -p $(dir $@)/scripts
 	@cp $(TEGRAFLASH_PATH)/tegraflash* $(dir $@)/tegraflash/
@@ -110,7 +110,7 @@ $(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_RECOVERYIMAGE_
 	@rm $(dir $@)/uefi_jetson.bin
 	@cp $(INSTALLED_TIANOCORE_TARGET) $(dir $@)/uefi_jetson.bin
 	@$(AVBTOOL_HOST) make_vbmeta_image --flags 2 --padding_size 256 --output $(dir $@)/vbmeta_skip.img
-	@cp $(INSTALLED_RECOVERYIMAGE_TARGET) $(dir $@)/
+	@cp $(INSTALLED_BOOT_TARGET) $(dir $@)/
 	@cp $(INSTALLED_VENDORBOOT_TARGET) $(dir $@)/
 	@touch $(dir $@)/super_meta_only.img
 	@$(LPFLASH_HOST) $(dir $@)/super_meta_only.img $(INSTALLED_SUPER_EMPTY_TARGET)
