@@ -109,7 +109,6 @@ ifneq ($(TARGET_BOOT_HAL),)
 AB_OTA_PARTITIONS += \
     boot \
     product \
-    recovery \
     system \
     system_ext \
     vbmeta \

@@ -135,9 +135,8 @@ $(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(INSTALLED_TOS_TARGET) $(
 	echo -n " CRC32:" >> $(strip $1)/qspi_bootblob_ver.txt
 	cat $(strip $1)/crc.txt >> $(strip $1)/qspi_bootblob_ver.txt
 	sed -i '/misc.txt/d' $(strip $1)/$(notdir $(strip $(2)))
-	sed -i '/recovery.img/d' $(strip $1)/$(notdir $(strip $(2)))
 	sed -i '/super_meta_only.img/d' $(strip $1)/$(notdir $(strip $(2)))
-	sed -i '/vendor_boot.img/d' $(strip $1)/$(notdir $(strip $(2)))
+	sed -i '/boot.img/d' $(strip $1)/$(notdir $(strip $(2)))
 	sed -i '/tegra234-p.*dtb/d' $(strip $1)/$(notdir $(strip $(2)))
 	sed -i '/vbmeta_skip.img/d' $(strip $1)/$(notdir $(strip $(2)))
 	cd $(strip $1); PYTHONDONTWRITEBYTECODE=1 PATH=$(abspath $(HOST_OUT_EXECUTABLES)):$(BUILD_TOP)/prebuilts/build-tools/path/linux-x86:$$PATH $(TEGRAFLASH_PATH)/tegraflash.py \
@@ -373,23 +372,14 @@ $(_kernel_blob): $(INSTALLED_KERNEL_TARGET)
 	@mkdir -p $(dir $@)
 	OUT=$(dir $@) TOP=$(BUILD_TOP) python3 $(TEGRAFLASH_PATH)/BUP_generator.py -t update -e \
 		"$(DTB_PATH)/tegra234-p3701-0000-p3737-0000.dtb kernel-dtb 20 0 p3710-0000+p3737-0000.android; \
-		 $(DTB_PATH)/tegra234-p3701-0000-p3737-0000.dtb recovery-dtb 20 0 p3710-0000+p3737-0000.android; \
 		 $(DTB_PATH)/tegra234-p3701-0004-p3737-0000.dtb kernel-dtb 20 0 p3710-0004+p3737-0000.android; \
-		 $(DTB_PATH)/tegra234-p3701-0004-p3737-0000.dtb recovery-dtb 20 0 p3710-0004+p3737-0000.android; \
 		 $(DTB_PATH)/tegra234-p3701-0000-p3737-0000.dtb kernel-dtb 20 0 p3710-0005+p3737-0000.android; \
-		 $(DTB_PATH)/tegra234-p3701-0000-p3737-0000.dtb recovery-dtb 20 0 p3710-0005+p3737-0000.android; \
 		 $(DTB_PATH)/tegra234-p3767-0000-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0000+p3768-0000.android; \
-		 $(DTB_PATH)/tegra234-p3767-0000-p3768-0000-a0-android.dtb recovery-dtb 20 0 p3767-0000+p3768-0000.android; \
 		 $(DTB_PATH)/tegra234-p3767-0001-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0001+p3768-0000.android; \
-		 $(DTB_PATH)/tegra234-p3767-0001-p3768-0000-a0-android.dtb recovery-dtb 20 0 p3767-0001+p3768-0000.android; \
 		 $(DTB_PATH)/tegra234-p3767-0000-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0002+p3768-0000.android; \
-		 $(DTB_PATH)/tegra234-p3767-0000-p3768-0000-a0-android.dtb recovery-dtb 20 0 p3767-0002+p3768-0000.android; \
 		 $(DTB_PATH)/tegra234-p3767-0003-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0003+p3768-0000.android; \
-		 $(DTB_PATH)/tegra234-p3767-0003-p3768-0000-a0-android.dtb recovery-dtb 20 0 p3767-0003+p3768-0000.android; \
 		 $(DTB_PATH)/tegra234-p3767-0004-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0004+p3768-0000.android; \
-		 $(DTB_PATH)/tegra234-p3767-0004-p3768-0000-a0-android.dtb recovery-dtb 20 0 p3767-0004+p3768-0000.android; \
-		 $(DTB_PATH)/tegra234-p3767-0003-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0005+p3768-0000.android; \
-		 $(DTB_PATH)/tegra234-p3767-0003-p3768-0000-a0-android.dtb recovery-dtb 20 0 p3767-0005+p3768-0000.android"
+		 $(DTB_PATH)/tegra234-p3767-0003-p3768-0000-a0-android.dtb kernel-dtb 20 0 p3767-0005+p3768-0000.android"
 	@mv $(dir $@)/ota.blob $@
 
 $(TARGET_OUT_PRODUCT_ETC)/firmware/kernel_only_payload: $(_kernel_blob) $(productimage_intermediates)/file_list.txt
