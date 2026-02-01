@@ -48,19 +48,19 @@ FLASH_XML=;
 if   [ ${MODULEINFO[sku]} -eq 0 ]; then
 ARVALASKU="0000";
 SDRAMSKU="0000";
-BPMPVAR="TE990M";
+BPMPVAR="TE980M";
 FLASH_XML="flash_android_t234_qspi_nvme.xml";
 # 8GB NX Prod
 elif [ ${MODULEINFO[sku]} -eq 1 ]; then
 ARVALASKU="0001";
 SDRAMSKU="0001";
-BPMPVAR="TE990M";
+BPMPVAR="TE980M";
 FLASH_XML="flash_android_t234_qspi_nvme.xml";
 # 16GB NX Dev
 elif [ ${MODULEINFO[sku]} -eq 2 ]; then
 ARVALASKU="0000";
 SDRAMSKU="0000";
-BPMPVAR="TE990M";
+BPMPVAR="TE980M";
 FLASH_XML="flash_android_t234_qspi_sd.xml";
 # 8GB Nano Prod
 elif [ ${MODULEINFO[sku]} -eq 3 ]; then
