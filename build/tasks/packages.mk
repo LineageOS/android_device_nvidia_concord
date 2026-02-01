@@ -62,6 +62,7 @@ $(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $
 	@rm $(dir $@)/uefi_jetson.bin
 	@cp $(INSTALLED_TIANOCORE_TARGET) $(dir $@)/uefi_jetson.bin
 	@rm $(dir $@)/bpmp_t234-TE950M-A1_prod.bin
+	@rm $(dir $@)/bpmp_t234-TE980M-A1_prod.bin
 	@$(AVBTOOL_HOST) make_vbmeta_image --flags 2 --padding_size 256 --output $(dir $@)/vbmeta_skip.img
 	@cp $(INSTALLED_BOOT_TARGET) $(dir $@)/
 	@cp $(INSTALLED_INITBOOT_TARGET) $(dir $@)/
@@ -111,6 +112,7 @@ $(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $
 	@rm $(dir $@)/BOOTAA64.efi
 	@rm $(dir $@)/uefi_jetson.bin
 	@cp $(INSTALLED_TIANOCORE_TARGET) $(dir $@)/uefi_jetson.bin
+	@rm $(dir $@)/bpmp_t234-TE990M-A1_prod.bin
 	@$(AVBTOOL_HOST) make_vbmeta_image --flags 2 --padding_size 256 --output $(dir $@)/vbmeta_skip.img
 	@cp $(INSTALLED_BOOT_TARGET) $(dir $@)/
 	@cp $(INSTALLED_INITBOOT_TARGET) $(dir $@)/
