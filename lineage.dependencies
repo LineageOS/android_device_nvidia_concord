@@ -1,5 +1,9 @@
 [
  {
+   "type": "kernel",
+   "version": "6.12"
+ },
+ {
    "repository": "android_bootable_tianocore_edk2-nvidia-lineage",
    "target_path": "bootable/tianocore/edk2-nvidia-lineage"
  },
@@ -10,27 +14,6 @@
  {
    "repository": "android_device_nvidia_t234-common",
    "target_path": "device/nvidia/t234-common"
- },
- {
-   "repository": "android_kernel_nvidia_kernel",
-   "target_path": "kernel/nvidia/kernel-5.10",
-   "branch": "lineage-23.0_5.10"
- },
- {
-   "repository": "android_kernel_nvidia_display",
-   "target_path": "kernel/nvidia/display"
- },
- {
-   "repository": "android_kernel_nvidia_nvidia",
-   "target_path": "kernel/nvidia/nvidia"
- },
- {
-   "repository": "android_kernel_nvidia_nvethernetrm",
-   "target_path": "kernel/nvidia/nvidia/drivers/net/ethernet/nvidia/nvethernet/nvethernetrm"
- },
- {
-   "repository": "android_kernel_nvidia_nvgpu",
-   "target_path": "kernel/nvidia/nvgpu"
  },
  {
    "repository": "android_hardware_nvidia_arm-trusted-firmware",
@@ -44,14 +27,6 @@
  {
    "repository": "android_hardware_nvidia_light",
    "target_path": "hardware/nvidia/light"
- },
- {
-   "repository": "android_hardware_nvidia_platform_t23x_concord_kernel-dts",
-   "target_path": "hardware/nvidia/platform/t23x/concord/kernel-dts"
- },
- {
-   "repository": "android_hardware_nvidia_platform_t23x_p3768_kernel-dts",
-   "target_path": "hardware/nvidia/platform/t23x/p3768/kernel-dts"
  },
  {
    "repository": "android_hardware_nvidia_thermal",
