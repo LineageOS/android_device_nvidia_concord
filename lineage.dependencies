@@ -37,20 +37,8 @@
    "target_path": "hardware/nvidia/boot_control"
  },
  {
-   "repository": "android_hardware_nvidia_hdmi-cec",
-   "target_path": "hardware/nvidia/hdmi-cec"
- },
- {
-   "repository": "android_hardware_nvidia_interfaces",
-   "target_path": "hardware/nvidia/interfaces"
- },
- {
    "repository": "android_hardware_nvidia_light",
    "target_path": "hardware/nvidia/light"
- },
- {
-   "repository": "android_hardware_nvidia_memtrack",
-   "target_path": "hardware/nvidia/memtrack"
  },
  {
    "repository": "android_hardware_nvidia_arm-trusted-firmware",
@@ -64,10 +52,6 @@
  {
    "repository": "android_hardware_nvidia_platform_t23x_p3768_kernel-dts",
    "target_path": "hardware/nvidia/platform/t23x/p3768/kernel-dts"
- },
- {
-   "repository": "android_hardware_nvidia_power",
-   "target_path": "hardware/nvidia/power"
  },
  {
    "repository": "android_hardware_nvidia_thermal",
