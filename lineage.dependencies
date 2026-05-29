@@ -33,17 +33,17 @@
    "target_path": "kernel/nvidia/nvgpu"
  },
  {
+   "repository": "android_hardware_nvidia_arm-trusted-firmware",
+   "target_path": "hardware/nvidia/t23x/arm-trusted-firmware",
+   "branch": "lineage-23.2-t234"
+ },
+ {
    "repository": "android_hardware_nvidia_boot_control",
    "target_path": "hardware/nvidia/boot_control"
  },
  {
    "repository": "android_hardware_nvidia_light",
    "target_path": "hardware/nvidia/light"
- },
- {
-   "repository": "android_hardware_nvidia_arm-trusted-firmware",
-   "target_path": "hardware/nvidia/t23x/arm-trusted-firmware",
-   "branch": "lineage-23.0-t234"
  },
  {
    "repository": "android_hardware_nvidia_platform_t23x_concord_kernel-dts",
