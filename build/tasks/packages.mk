@@ -13,9 +13,9 @@
 # limitations under the License.
 
 ifeq ($(TARGET_REFERENCE_DEVICE), concord)
-TEGRAFLASH_PATH := $(BUILD_TOP)/vendor/nvidia/common/r36/tegraflash
-T234_BL         := $(BUILD_TOP)/vendor/nvidia/t234/r36/bootloader
-CONCORD_BCT     := $(BUILD_TOP)/vendor/nvidia/concord/r36/BCT
+TEGRAFLASH_PATH := $(BUILD_TOP)/vendor/nvidia/common/r39/tegraflash
+T234_BL         := $(BUILD_TOP)/vendor/nvidia/t234/r39/bootloader
+CONCORD_BCT     := $(BUILD_TOP)/vendor/nvidia/concord/r39/BCT
 CONCORD_FLASH   := $(BUILD_TOP)/device/nvidia/concord/flash_package
 COMMON_FLASH    := $(BUILD_TOP)/device/nvidia/tegra-common/flash_package
 
@@ -49,7 +49,7 @@ $(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $
 	@cp $(TEGRAFLASH_PATH)/tegrasign_v3* $(dir $@)/tegraflash/
 	@cp $(TEGRAFLASH_PATH)/sw_memcfg_overlay.pl $(dir $@)/tegraflash/
 	@cp -R $(TEGRAFLASH_PATH)/pyfdt $(dir $@)/tegraflash/
-	@cp $(TEGRAFLASH_PATH)/dtbcheck.py $(TEGRAFLASH_PATH)/t194.py $(TEGRAFLASH_PATH)/t234.py $(dir $@)/tegraflash/
+	@cp $(TEGRAFLASH_PATH)/dtbcheck.py $(TEGRAFLASH_PATH)/t234.py $(dir $@)/tegraflash/
 	@cp $(COMMON_FLASH)/*.sh $(dir $@)/scripts/
 	@cp $(CONCORD_FLASH)/p3710.sh $(dir $@)/flash.sh
 	@LINEAGEVER=$(shell BUILD_TOP=$(abspath $(BUILD_TOP)) python $(COMMON_FLASH)/get_branch_name.py) && \
@@ -99,7 +99,7 @@ $(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $
 	@cp $(TEGRAFLASH_PATH)/tegrasign_v3* $(dir $@)/tegraflash/
 	@cp $(TEGRAFLASH_PATH)/sw_memcfg_overlay.pl $(dir $@)/tegraflash/
 	@cp -R $(TEGRAFLASH_PATH)/pyfdt $(dir $@)/tegraflash/
-	@cp $(TEGRAFLASH_PATH)/dtbcheck.py $(TEGRAFLASH_PATH)/t194.py $(TEGRAFLASH_PATH)/t234.py $(dir $@)/tegraflash/
+	@cp $(TEGRAFLASH_PATH)/dtbcheck.py $(TEGRAFLASH_PATH)/t234.py $(dir $@)/tegraflash/
 	@cp $(COMMON_FLASH)/*.sh $(dir $@)/scripts/
 	@cp $(CONCORD_FLASH)/p3766.sh $(dir $@)/flash.sh
 	@LINEAGEVER=$(shell BUILD_TOP=$(abspath $(BUILD_TOP)) python $(COMMON_FLASH)/get_branch_name.py) && \
