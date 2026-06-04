@@ -41,42 +41,49 @@ if ! check_compatibility ${TARGET_MODULE_ID} ${TARGET_CARRIER_ID}; then
 fi;
 
 ARVALASKU=;
+NCTSKU=;
 SDRAMSKU=;
 BPMPVAR=;
 FLASH_XML=;
 # 16GB NX Prod
 if   [ ${MODULEINFO[sku]} -eq 0 ]; then
 ARVALASKU="0000";
+NCTSKU="0000";
 SDRAMSKU="0000";
 BPMPVAR="TE980M";
 FLASH_XML="flash_android_t234_qspi_nvme.xml";
 # 8GB NX Prod
 elif [ ${MODULEINFO[sku]} -eq 1 ]; then
 ARVALASKU="0001";
+NCTSKU="0001";
 SDRAMSKU="0001";
 BPMPVAR="TE980M";
 FLASH_XML="flash_android_t234_qspi_nvme.xml";
 # 16GB NX Dev
 elif [ ${MODULEINFO[sku]} -eq 2 ]; then
 ARVALASKU="0000";
+NCTSKU="0002";
 SDRAMSKU="0000";
 BPMPVAR="TE980M";
 FLASH_XML="flash_android_t234_qspi_sd.xml";
 # 8GB Nano Prod
 elif [ ${MODULEINFO[sku]} -eq 3 ]; then
 ARVALASKU="0003";
+NCTSKU="0003";
 SDRAMSKU="0001";
 BPMPVAR="TE950M";
 FLASH_XML="flash_android_t234_qspi_nvme.xml";
 # 4GB Nano Prod
 elif [ ${MODULEINFO[sku]} -eq 4 ]; then
 ARVALASKU="0004";
+NCTSKU="0004";
 SDRAMSKU="0004";
 BPMPVAR="TE950M";
 FLASH_XML="flash_android_t234_qspi_nvme.xml";
 # 8GB Nano Dev
 elif [ ${MODULEINFO[sku]} -eq 5 ]; then
 ARVALASKU="0003";
+NCTSKU="0005";
 SDRAMSKU="0001";
 BPMPVAR="TE950M";
 FLASH_XML="flash_android_t234_qspi_sd.xml";
@@ -85,6 +92,7 @@ fi;
 cp tegra234-p3767-${ARVALASKU}-p3768-0000-a0-android.dtb tegra234-p3767-p3768.dtb;
 cp bpmp_t234-${BPMPVAR}-A1_prod.bin bpmp_t234-prod.bin;
 cp tegra234-bpmp-3767-${ARVALASKU}-3768-super.dtb tegra234-bpmp.dtb;
+cp p3766-${NCTSKU}-devkit.bin p3766.bin;
 
 # Generate version partition
 if ! generate_version_bootblob_v4 qspi_bootblob_ver.txt REPLACEME; then
@@ -136,4 +144,4 @@ tegraflash.py \
   --cfg ${FLASH_XML} \
   --cmd "flash; reboot";
 
-rm -f tegra234-p3767-p3768.dtb bpmp_t234-prod.bin tegra234-bpmp-3767-3509.dtb qspi_bootblob_ver.txt AndroidConfig.dtbo;
+rm -f tegra234-p3767-p3768.dtb bpmp_t234-prod.bin tegra234-bpmp-3767-3509.dtb qspi_bootblob_ver.txt AndroidConfig.dtbo p3766.bin;

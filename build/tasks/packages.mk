@@ -19,6 +19,9 @@ CONCORD_BCT     := $(BUILD_TOP)/vendor/nvidia/concord/r39/BCT
 CONCORD_FLASH   := $(BUILD_TOP)/device/nvidia/concord/flash_package
 COMMON_FLASH    := $(BUILD_TOP)/device/nvidia/tegra-common/flash_package
 
+TNSPEC_PY      := $(BUILD_TOP)/vendor/nvidia/common/rel-24/tegraflash/tnspec.py
+CONCORD_TNSPEC := $(BUILD_TOP)/device/nvidia/concord/tnspec/concord.json
+
 INSTALLED_KERNEL_TARGET        := $(PRODUCT_OUT)/kernel
 INSTALLED_SUPER_EMPTY_TARGET   := $(PRODUCT_OUT)/super_empty.img
 INSTALLED_BOOT_TARGET          := $(PRODUCT_OUT)/boot.img
@@ -63,6 +66,9 @@ $(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $
 	@cp $(INSTALLED_TIANOCORE_TARGET) $(dir $@)/uefi_jetson.bin
 	@rm $(dir $@)/bpmp_t234-TE950M-A1_prod.bin
 	@rm $(dir $@)/bpmp_t234-TE980M-A1_prod.bin
+	@python3 $(TNSPEC_PY) nct new p3710-0000-devkit -o $(dir $@)/p3710-0000-devkit.bin --spec $(CONCORD_TNSPEC)
+	@python3 $(TNSPEC_PY) nct new p3710-0004-devkit -o $(dir $@)/p3710-0004-devkit.bin --spec $(CONCORD_TNSPEC)
+	@python3 $(TNSPEC_PY) nct new p3710-0005-devkit -o $(dir $@)/p3710-0005-devkit.bin --spec $(CONCORD_TNSPEC)
 	@$(AVBTOOL_HOST) make_vbmeta_image --flags 2 --padding_size 256 --output $(dir $@)/vbmeta_skip.img
 	@cp $(INSTALLED_BOOT_TARGET) $(dir $@)/
 	@cp $(INSTALLED_INITBOOT_TARGET) $(dir $@)/
@@ -113,6 +119,12 @@ $(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $
 	@rm $(dir $@)/uefi_jetson.bin
 	@cp $(INSTALLED_TIANOCORE_TARGET) $(dir $@)/uefi_jetson.bin
 	@rm $(dir $@)/bpmp_t234-TE990M-A1_prod.bin
+	@python3 $(TNSPEC_PY) nct new p3766-0000-devkit -o $(dir $@)/p3766-0000-devkit.bin --spec $(CONCORD_TNSPEC)
+	@python3 $(TNSPEC_PY) nct new p3766-0001-devkit -o $(dir $@)/p3766-0001-devkit.bin --spec $(CONCORD_TNSPEC)
+	@python3 $(TNSPEC_PY) nct new p3766-0002-devkit -o $(dir $@)/p3766-0002-devkit.bin --spec $(CONCORD_TNSPEC)
+	@python3 $(TNSPEC_PY) nct new p3766-0003-devkit -o $(dir $@)/p3766-0003-devkit.bin --spec $(CONCORD_TNSPEC)
+	@python3 $(TNSPEC_PY) nct new p3766-0004-devkit -o $(dir $@)/p3766-0004-devkit.bin --spec $(CONCORD_TNSPEC)
+	@python3 $(TNSPEC_PY) nct new p3766-0005-devkit -o $(dir $@)/p3766-0005-devkit.bin --spec $(CONCORD_TNSPEC)
 	@$(AVBTOOL_HOST) make_vbmeta_image --flags 2 --padding_size 256 --output $(dir $@)/vbmeta_skip.img
 	@cp $(INSTALLED_BOOT_TARGET) $(dir $@)/
 	@cp $(INSTALLED_INITBOOT_TARGET) $(dir $@)/

@@ -120,9 +120,9 @@ $(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(INSTALLED_TOS_TARGET) $(
 	@cp $(CONCORD_BCT)/$(strip $4) $(strip $1)/tegra234-bpmp.dtb
 	@cp $(DTB_PATH)/$(strip $5) $(strip $1)/
 	@cp $(PRODUCT_OUT)/AndroidConfiguration.dtbo $(strip $1)/
-	$(FDTPUT_HOST) -p -t bx $(strip $1)/AndroidConfiguration.dtbo /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformSpec data $(shell printf "p%04d-%04d+p%04d-%04d.android\0" $(strip $(24)) $(strip $(25)) $(strip $(26)) $(strip $(27)) |xxd -p |sed 's/../& /g');
-	$(FDTPUT_HOST) -p $(strip $1)/AndroidConfiguration.dtbo /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformSpec runtime;
-	$(FDTPUT_HOST) -p $(strip $1)/AndroidConfiguration.dtbo /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformSpec locked;
+	$(FDTPUT_HOST) -p -t bx $(strip $1)/AndroidConfiguration.dtbo /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformCompatSpec data $(shell printf "p%04d-%04d+p%04d-%04d.android\0" $(strip $(24)) $(strip $(25)) $(strip $(26)) $(strip $(27)) |xxd -p |sed 's/../& /g');
+	$(FDTPUT_HOST) -p $(strip $1)/AndroidConfiguration.dtbo /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformCompatSpec runtime;
+	$(FDTPUT_HOST) -p $(strip $1)/AndroidConfiguration.dtbo /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformCompatSpec locked;
 	echo "NV4" > $(strip $1)/qspi_bootblob_ver.txt
 	echo "# R$(word 1,$(subst ., ,$(LINEAGEVER))) , REVISION: $(word 2,$(subst ., ,$(LINEAGEVER)))" >> $(strip $1)/qspi_bootblob_ver.txt
 	echo "BOARDID=$(strip $(24)) BOARDSKU=$(strip $(25)) FAB=" >> $(strip $1)/qspi_bootblob_ver.txt

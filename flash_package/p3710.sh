@@ -67,6 +67,7 @@ fi;
 cp tegra234-p3701-${DTBSKU}-p3737-0000.dtb tegra234-p3701-p3737.dtb;
 cp bpmp_t234-TE990M-A1_prod.bin bpmp_t234-prod.bin;
 cp tegra234-bpmp-3701-${BPMPSKU}-3737-0000.dtb tegra234-bpmp.dtb;
+cp p3710-${BPMPSKU}-devkit.bin p3710.bin;
 
 # Generate version partition
 if ! generate_version_bootblob_v4 qspi_bootblob_ver.txt REPLACEME; then
@@ -118,4 +119,4 @@ tegraflash.py \
   --cfg flash_android_t234_sdmmc.xml \
   --cmd "flash; reboot";
 
-rm -f tegra234-p3701-p3737.dtb bpmp_t234-prod.bin tegra234-bpmp-3701-3737.dtb qspi_bootblob_ver.txt AndroidConfig.dtbo;
+rm -f tegra234-p3701-p3737.dtb bpmp_t234-prod.bin tegra234-bpmp-3701-3737.dtb qspi_bootblob_ver.txt AndroidConfig.dtbo p3710.bin;

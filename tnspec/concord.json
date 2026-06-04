@@ -1,0 +1,100 @@
+{
+    "copyright" : "Copyright (C) 2026 The LineageOS Project.  Apache 2.0.",
+    "family" : "T234/Concord",
+    "version" : "2.1",
+    "hw" : {
+        "#" : "'.' indicates the corresponding keys do not get copied when based",
+        "." : ["desc"],
+        "#" : "--------- Concord Platforms ---------",
+        "p3710-0000-devkit" : {
+            "base" : "&uuid",
+            "desc" : "AGX Jetson Devkit",
+            "id" : "p3701-0000+p3737-0000",
+            "config" : "android",
+            "sn" : "",
+            "proc" : {
+                "id" : "3701",
+                "sku" : "0",
+                "fab" : "0"
+            },
+            "hide" : false,
+            "cm" : "0",
+            "lbh" : "1",
+            "factory_mode" : "0",
+            "dbgport" : "0"
+        },
+        "p3710-0004-devkit" : {
+            "base" : "p3710-0004-devkit",
+            "id" : "p3701-0004+p3737-0000",
+            "proc" : {
+                "sku" : "4"
+            }
+        },
+        "p3710-0005-devkit" : {
+            "base" : "p3710-0005-devkit",
+            "id" : "p3701-0005+p3737-0000",
+            "proc" : {
+                "sku" : "5"
+            }
+        },
+        "#" : "--------- Arvala Platforms ---------",
+        "p3766-0000-devkit" : {
+            "base" : "&uuid",
+            "desc" : "Jetson NX Devkit",
+            "id" : "p3767-0000+p3768-0000",
+            "config" : "android",
+            "sn" : "",
+            "proc" : {
+                "id" : "3767",
+                "sku" : "0",
+                "fab" : "0"
+            },
+            "hide" : false,
+            "cm" : "0",
+            "lbh" : "1",
+            "factory_mode" : "0",
+            "dbgport" : "0"
+        },
+        "p3766-0001-devkit" : {
+            "base" : "p3766-0000-devkit",
+            "id" : "p3767-0001+p3768-0000",
+            "proc" : {
+                "sku" : "1"
+            }
+        },
+        "p3766-0002-devkit" : {
+            "base" : "p3766-0000-devkit",
+            "id" : "p3767-0002+p3768-0000",
+            "proc" : {
+                "sku" : "2"
+            }
+        },
+        "p3766-0003-devkit" : {
+            "base" : "p3766-0000-devkit",
+            "id" : "p3767-0003+p3768-0000",
+            "proc" : {
+                "sku" : "3"
+            }
+        },
+        "p3766-0004-devkit" : {
+            "base" : "p3766-0000-devkit",
+            "id" : "p3767-0004+p3768-0000",
+            "proc" : {
+                "sku" : "4"
+            }
+        },
+        "p3766-0005-devkit" : {
+            "base" : "p3766-0000-devkit",
+            "id" : "p3767-0005+p3768-0000",
+            "proc" : {
+                "sku" : "5"
+            }
+        },
+        "#references" : "##################################",
+        "&uuid" : {
+            "uuid" : {
+                "use_tags" : true
+            }
+        }
+    }
+}
