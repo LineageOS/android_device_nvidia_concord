@@ -18,6 +18,7 @@
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     governor_pod_scaling \
     nvidia-drm \
+    nvmap \
     nvgpu
 
 # Tegra-drm, for falcons such vic and nvdec
