@@ -109,11 +109,13 @@ AB_OTA_PARTITIONS += \
     init_boot \
     product \
     system \
+    system_dlkm \
     system_ext \
     vbmeta \
     vbmeta_system \
     vendor \
     vendor_boot \
+    vendor_dlkm \
     odm
 ifeq ($(TARGET_BOOT_HAL),efi)
 AB_OTA_POSTINSTALL_CONFIG += \
