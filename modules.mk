@@ -119,7 +119,7 @@ BOOT_KERNEL_MODULES := \
     nvidia-drm.ko \
     efivarfs.ko
 
-ifeq ($(TARGET_TEGRA_TOS),trusty)
+ifeq ($(TARGET_SECURITY_KEYMINT_HAL),trusty)
 BOOT_KERNEL_MODULES += \
     ffa-core.ko \
     ffa-module.ko \
@@ -132,7 +132,7 @@ BOOT_KERNEL_MODULES += \
     trusty-test.ko \
     trusty-virtio.ko \
     trusty-virtio-polling.ko
-else ifeq ($(TARGET_TEGRA_TOS),optee)
+else ifeq ($(TARGET_SECURITY_KEYMINT_HAL),optee)
 BOOT_KERNEL_MODULES += \
     tee.ko \
     optee.ko
@@ -164,13 +164,13 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := \
     sdhci-tegra \
     efivarfs
 
-ifeq ($(TARGET_TEGRA_TOS),trusty)
+ifeq ($(TARGET_SECURITY_KEYMINT_HAL),trusty)
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD += \
     trusty-smc \
     trusty-log \
     trusty-ipc \
     trusty-virtio
-else ifeq ($(TARGET_TEGRA_TOS),optee)
+else ifeq ($(TARGET_SECURITY_KEYMINT_HAL),optee)
 BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD += \
     optee
 endif
