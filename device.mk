@@ -26,7 +26,7 @@ TARGET_TEGRA_MODELS := $(shell awk -F, '/tegra_init::devices/{ f = 1; next } /};
 TARGET_TEGRA_VARIANTS := $(shell awk -F, '/tegra_init::devices/{ f = 1; next } /};/{ f = 0 } f{ gsub(/"/, "", $$2); gsub(/ /, "", $$2); print $$2 }' device/nvidia/$(TARGET_REFERENCE_DEVICE)/init/init_$(TARGET_REFERENCE_DEVICE).cpp |sort |uniq)
 
 TARGET_KERNEL_VERSION ?= 6.12
-TARGET_BOOT_HAL       ?= smd
+TARGET_BOOT_HAL       ?= msc
 TARGET_LIGHT_HAL      ?= tegra
 
 TARGET_HAS_BATTERY    ?= false
@@ -117,7 +117,7 @@ AB_OTA_PARTITIONS += \
     vendor_boot \
     vendor_dlkm \
     odm
-ifeq ($(TARGET_BOOT_HAL),efi)
+ifeq ($(TARGET_BOOT_HAL),msc)
 AB_OTA_POSTINSTALL_CONFIG += \
     FILESYSTEM_TYPE_system=ext4 \
     POSTINSTALL_OPTIONAL_system=true \
