@@ -118,6 +118,13 @@ BOOT_KERNEL_MODULES := \
     nvidia.ko \
     nvidia-modeset.ko \
     nvidia-drm.ko \
+    nvhwpm.ko \
+    tegra-se-kds.ko \
+    tegra-se.ko \
+    tegra-se-nvrng.ko \
+    serial-tegra.ko \
+    tegra-bpmp-bwmgr.ko \
+    tegra-cactmon-mc-all.ko \
     efivarfs.ko
 
 ifeq ($(TARGET_SECURITY_KEYMINT_HAL),trusty)
@@ -163,6 +170,13 @@ BOARD_VENDOR_RAMDISK_KERNEL_MODULES_LOAD := \
     pwm-tegra-tachometer \
     tegra-bpmp-thermal \
     sdhci-tegra \
+    nvhwpm \
+    tegra-dce \
+    tegra-se \
+    tegra-se-nvrng \
+    serial-tegra \
+    tegra-bpmp-bwmgr \
+    tegra-cactmon-mc-all \
     efivarfs
 
 ifeq ($(TARGET_SECURITY_KEYMINT_HAL),trusty)
