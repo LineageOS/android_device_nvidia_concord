@@ -29,7 +29,7 @@ INSTALLED_INITBOOT_TARGET      := $(PRODUCT_OUT)/init_boot.img
 INSTALLED_VENDORBOOT_TARGET    := $(PRODUCT_OUT)/vendor_boot.img
 INSTALLED_TOS_TARGET           := $(PRODUCT_OUT)/tos-$(if $(filter-out default,$(TARGET_SECURITY_KEYMINT_HAL)),$(TARGET_SECURITY_KEYMINT_HAL),mon-only).img
 INSTALLED_TIANOCORE_TARGET     := $(PRODUCT_OUT)/tianocore.bin
-INSTALLED_EDK2_DTBO_TARGET     := $(PRODUCT_OUT)/AndroidConfiguration.dtbo
+INSTALLED_EDK2_DTBO_TARGETS    := $(PRODUCT_OUT)/AndroidConfiguration.dtbo $(PRODUCT_OUT)/SetEkd2TestFmpPkcs7Cert.dtbo
 
 TOYBOX_HOST  := $(HOST_OUT_EXECUTABLES)/toybox
 AVBTOOL_HOST := $(HOST_OUT_EXECUTABLES)/avbtool
@@ -43,7 +43,7 @@ endif
 
 _p3710_package_archive := $(call intermediates-dir-for,ETC,p3710_flash_package)/p3710_flash_package.txz
 
-$(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $(INSTALLED_INITBOOT_TARGET) $(INSTALLED_VENDORBOOT_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET) $(INSTALLED_TOS_TARGET)
+$(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $(INSTALLED_INITBOOT_TARGET) $(INSTALLED_VENDORBOOT_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGETS) $(INSTALLED_TOS_TARGET)
 	@mkdir -p $(dir $@)/tegraflash
 	@mkdir -p $(dir $@)/scripts
 	@cp $(TEGRAFLASH_PATH)/tegraflash* $(dir $@)/tegraflash/
@@ -75,7 +75,7 @@ $(_p3710_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $
 	@cp $(INSTALLED_VENDORBOOT_TARGET) $(dir $@)/
 	@touch $(dir $@)/super_meta_only.img
 	@$(LPFLASH_HOST) $(dir $@)/super_meta_only.img $(INSTALLED_SUPER_EMPTY_TARGET)
-	@cp $(PRODUCT_OUT)/AndroidConfiguration.dtbo $(dir $@)/
+	@cp $(INSTALLED_EDK2_DTBO_TARGETS) $(dir $@)/
 	@cp $(DTB_PATH)/tegra234-p3701-0000-p3737-0000.dtb $(dir $@)/
 	@cp $(DTB_PATH)/tegra234-p3737-audio-codec-rt5658-40pin.dtbo $(dir $@)/
 	@cp $(DTB_PATH)/tegra234-p3737-overlay.dtbo $(dir $@)/
@@ -96,7 +96,7 @@ p3710_flash_package: $(PRODUCT_OUT)/p3710_flash_package.txz
 
 _p3766_package_archive := $(call intermediates-dir-for,ETC,p3766_flash_package)/p3766_flash_package.txz
 
-$(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $(INSTALLED_INITBOOT_TARGET) $(INSTALLED_VENDORBOOT_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET) $(INSTALLED_TOS_TARGET)
+$(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $(INSTALLED_INITBOOT_TARGET) $(INSTALLED_VENDORBOOT_TARGET) $(TOYBOX_HOST) $(AVBTOOL_HOST) $(INSTALLED_SUPER_EMPTY_TARGET) $(LPFLASH_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGETS) $(INSTALLED_TOS_TARGET)
 	@mkdir -p $(dir $@)/tegraflash
 	@mkdir -p $(dir $@)/scripts
 	@cp $(TEGRAFLASH_PATH)/tegraflash* $(dir $@)/tegraflash/
@@ -131,7 +131,7 @@ $(_p3766_package_archive): $(INSTALLED_KERNEL_TARGET) $(INSTALLED_BOOT_TARGET) $
 	@cp $(INSTALLED_VENDORBOOT_TARGET) $(dir $@)/
 	@touch $(dir $@)/super_meta_only.img
 	@$(LPFLASH_HOST) $(dir $@)/super_meta_only.img $(INSTALLED_SUPER_EMPTY_TARGET)
-	@cp $(PRODUCT_OUT)/AndroidConfiguration.dtbo $(dir $@)/
+	@cp $(INSTALLED_EDK2_DTBO_TARGETS) $(dir $@)/
 	@cp $(DTB_PATH)/tegra234-p3767-0000-p3768-0000-a0-android.dtb $(dir $@)/
 	@cp $(DTB_PATH)/tegra234-p3767-0001-p3768-0000-a0-android.dtb $(dir $@)/
 	@cp $(DTB_PATH)/tegra234-p3767-0003-p3768-0000-a0-android.dtb $(dir $@)/

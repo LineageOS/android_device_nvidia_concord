@@ -28,7 +28,7 @@ CAPSULE_TRUSTED ?= $(CAPSULE_CERTS)/TestRoot.pub.pem
 INSTALLED_KERNEL_TARGET    := $(PRODUCT_OUT)/kernel
 INSTALLED_TOS_TARGET       := $(PRODUCT_OUT)/tos-$(if $(filter-out default,$(TARGET_SECURITY_KEYMINT_HAL)),$(TARGET_SECURITY_KEYMINT_HAL),mon-only).img
 INSTALLED_TIANOCORE_TARGET := $(PRODUCT_OUT)/tianocore.bin
-INSTALLED_EDK2_DTBO_TARGET := $(PRODUCT_OUT)/AndroidConfiguration.dtbo
+INSTALLED_EDK2_DTBO_TARGETS := $(PRODUCT_OUT)/AndroidConfiguration.dtbo $(PRODUCT_OUT)/SetEkd2TestFmpPkcs7Cert.dtbo
 
 TOYBOX_HOST  := $(HOST_OUT_EXECUTABLES)/toybox
 
@@ -105,7 +105,7 @@ _p3766-0005_br_bct := $(P3766-0005_SIGNED_PATH)/br_bct_BR.bct
 # $26 Carrier board id
 # $27 Carrier sku
 define t234_bl_signing_rule
-$(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(INSTALLED_TOS_TARGET) $(FDTPUT_HOST) $(DTC_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGET) $(TOYBOX_HOST) $(CPP_HOST)
+$(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(INSTALLED_TOS_TARGET) $(FDTPUT_HOST) $(DTC_HOST) $(INSTALLED_TIANOCORE_TARGET) $(INSTALLED_EDK2_DTBO_TARGETS) $(TOYBOX_HOST) $(CPP_HOST)
 	@mkdir -p $(strip $1)
 	@cp $(strip $2) $(strip $1)/
 	@cp $(CONCORD_BCT)/* $(strip $1)/
@@ -119,7 +119,7 @@ $(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(INSTALLED_TOS_TARGET) $(
 	@mv $(strip $1)/bpmp_t234-$(strip $3)_prod.bin $(strip $1)/bpmp_t234-prod.bin
 	@cp $(CONCORD_BCT)/$(strip $4) $(strip $1)/tegra234-bpmp.dtb
 	@cp $(DTB_PATH)/$(strip $5) $(strip $1)/
-	@cp $(PRODUCT_OUT)/AndroidConfiguration.dtbo $(strip $1)/
+	@cp $(INSTALLED_EDK2_DTBO_TARGETS) $(strip $1)/
 	$(FDTPUT_HOST) -p -t bx $(strip $1)/AndroidConfiguration.dtbo /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformCompatSpec data $(shell printf "p%04d-%04d+p%04d-%04d.android\0" $(strip $(24)) $(strip $(25)) $(strip $(26)) $(strip $(27)) |xxd -p |sed 's/../& /g');
 	$(FDTPUT_HOST) -p $(strip $1)/AndroidConfiguration.dtbo /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformCompatSpec runtime;
 	$(FDTPUT_HOST) -p $(strip $1)/AndroidConfiguration.dtbo /fragment@0/__overlay__/firmware/uefi/variables/gNVIDIAPublicVariableGuid/TegraPlatformCompatSpec locked;
@@ -148,7 +148,7 @@ $(strip $1)/br_bct_BR.bct: $(INSTALLED_KERNEL_TARGET) $(INSTALLED_TOS_TARGET) $(
 		--cmd "sign" \
 		--cfg $(notdir $(strip $(2))) \
 		--odmdata $(subst $(SPACE),$(COMMA),$(6)) \
-		--overlay_dtb AndroidConfiguration.dtbo,$(subst $(SPACE),,$(foreach dtbo,$(strip $(7)),$(DTB_PATH)/$(dtbo),)) \
+		--overlay_dtb AndroidConfiguration.dtbo,SetEkd2TestFmpPkcs7Cert.dtbo,$(subst $(SPACE),,$(foreach dtbo,$(strip $(7)),$(DTB_PATH)/$(dtbo),)) \
 		--bldtb $(strip $(5)) \
 		--device_config $(strip $(8)) \
 		--misc_config $(strip $(9)) \
