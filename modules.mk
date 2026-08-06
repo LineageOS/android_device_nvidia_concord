@@ -21,10 +21,6 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     nvmap \
     nvgpu
 
-# Tegra-drm, for falcons such vic and nvdec
-BOARD_VENDOR_KERNEL_MODULES_LOAD += \
-    tegra-drm-next
-
 # Usb Bluetooth
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     btusb
@@ -80,6 +76,10 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD += \
 BOARD_VENDOR_KERNEL_MODULES_LOAD += \
     hid-nvidia-shield \
     hid-nvidia-shield-oot
+
+# Tegra-drm, for falcons such vic and nvdec
+BOARD_VENDOR_KERNEL_MODULES_LOAD += \
+    tegra-drm-next
 
 
 # Copy to boot
