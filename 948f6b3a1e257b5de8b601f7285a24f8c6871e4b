@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6110ca7_38dfefed",
+        "filename": "BoardConfig.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 27741
+      },
+      "writtenOn": "2026-08-14T21:03:59Z",
+      "side": 1,
+      "message": "erofs?",
+      "revId": "948f6b3a1e257b5de8b601f7285a24f8c6871e4b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    }
+  ]
+}
