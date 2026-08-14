@@ -34,6 +34,24 @@
       "parentUuid": "cab0c370_056fc320",
       "revId": "657b8206d7770a4b9d1ebe7076745f9434b6f0cb",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4711dadc_ce9bf381",
+        "filename": "build/tasks/firmware.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2026-08-14T22:32:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ef20de90_7e416cf4",
+      "revId": "657b8206d7770a4b9d1ebe7076745f9434b6f0cb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71"
     }
   ],
   "submitRequirementResults": [
