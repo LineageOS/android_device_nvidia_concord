@@ -33,7 +33,6 @@ on boot
     start vendor.lkm_loader
 
     setprop persist.vendor.tegra.decompression cde-client
-    setprop sys.usb.configfs 1
 
 on init
     mount efivarfs none /sys/firmware/efi/efivars context=u:object_r:sysfs_efivar:s0
